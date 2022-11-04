@@ -1,0 +1,152 @@
+.rule{
+    background-color:#293462 !important;
+}
+
+.cardCustom{
+    padding: 10px;
+}
+.greenAdd{
+    background-color:#14C38E; 
+    color:white;
+}
+
+.greenAdd:hover{
+    background-color: #00875E; 
+    color:white;
+}
+.redAdd{
+    background-color:#D61C4E;
+    color:white;
+}
+.redAdd:hover{
+    background-color:#A7002D;
+    color:white;
+}
+.orangeAdd{
+    background-color:#FF9551; 
+    color: white;
+}
+.orangeAdd:hover{
+    background-color:#FF9551; 
+    color: white;
+}
+/* BUAT BUTTON AKSI */
+.greenAcc{
+    background-color:#14C38E; 
+    color:white;
+}
+.greenAcc:hover{
+    background-color: #00875E; 
+    color:white;
+    transform:scale(1.5);
+}
+.redRej{
+    background-color:#D61C4E;
+    color:white;
+}
+.redRej:hover{
+    background-color:#A7002D;
+    color:white;
+    transform:scale(1.5);
+}
+.blueDetail{
+    background-color: #0096FF; 
+    color:white;
+}
+.blueDetail:hover{
+    background-color: #006AB5; 
+    color:white;
+    transform:scale(1.5);
+}
+.orangeEdit{
+    background-color:#FF9551; 
+    color: white;
+}
+.orangeEdit:hover{
+    background-color: #EB5C00; 
+    color: white;
+    transform:scale(1.5);
+}
+
+.navbar {
+    border-radius: 10px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    width: 50% !important;
+}
+div.dataTables_wrapper div.dataTables_filter label {
+    font-size: 15px;
+}
+div.dataTables_wrapper div.dataTables_filter input {
+    height: 25px;
+    width: 300px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+div.dataTables_wrapper div.dataTables_length label {
+    font-size: 20px;
+}
+table.table-bordered.dataTable thead tr:first-child td,
+table.table-bordered.dataTable thead tr:first-child th {
+    font-size: 16px;
+    font-weight: bold;
+}
+table.table-bordered.dataTable td,
+table.table-bordered.dataTable th {
+    font-size: 16px;
+    font-weight: normal;
+}
+div.dataTables_wrapper div.dataTables_info {
+    font-size: 16px;
+}
+.active > .page-link,
+.page-link.active {
+    background-color: #293462;
+    border-color: #293462;
+}
+.page-link {
+    color: #293462;
+}
+div.dataTables_wrapper div.dataTables_length select {
+    border-radius: 20px;
+    margin: 5px;
+}
+/* TABLE HOVER COLOR BS */
+.table-hover tbody tr:hover td {
+    background: #293462;
+    color: #fff;
+  }
+.margin-button{
+    margin-right: 3px !important;
+    margin-left: 3px !important;
+}
+.scroll {
+  height:150px;
+  overflow-y: scroll;
+}
+li:not(:last-child) {
+    margin-bottom: 10px;
+}
+.cardHeadCustom{
+    padding: 15px; 
+    background-color:#293462;
+    color:white;
+    border-color:#0dcaf0;
+}
+.linkHeadCustom:hover{
+    font-size: 20px;
+    color:#0dcaf0;
+    display:block;
+    text-decoration:none;
+}
+
+
+/* MARGIN UNTUK HREF */
+.customMarginButton{
+    margin:4px;
+    margin-top: 8px;
+}
