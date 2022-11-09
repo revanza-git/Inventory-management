@@ -8,8 +8,8 @@
 
     <link rel="shortcut icon" href="{{ asset('faviconNX.ico') }}">
 
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <link rel="stylesheet" type="text/css" href="{{asset('css/login.css')}}">
     <link rel="stylesheet" href="{{asset('css/customWeb.css')}}">
@@ -65,7 +65,7 @@
                                 <label>Email</label>
                                 <input name="email" type="text" class="form-control"></input>
                             </div>
-                            <div class="form-group mb-2">
+                            <div class="form-group mb-5">
                                 <label for="password" class="">Password</label>
                                 <input name="password" type="password" class="form-control"></div>
                                 <div class="text-right">
@@ -76,15 +76,22 @@
                                     Log in
                                 </button>
                             </div>
-                            {{-- <div>
-                                <a href="/register" class="text-white-50 fw-bold ">Register</a>
-                            </div> --}}
-                            {{-- HANYA BETA --}}
+                            
                         </div>
 
                     </div>
                     </form>
+                    <div style="margin-top: 50px;">
+                        <a href="https://www.linkedin.com/in/rifqi-adliansyah" target="_blank">
+                            © 2022 Copyright : Rifqi Adliansyah
+                        </a> / 
+                        <a href="https://wa.me/+6282111163397" target="_blank">
+                            <i class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
+                
+
             </div>
         </div>
        
