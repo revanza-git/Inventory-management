@@ -1,4 +1,4 @@
-## Sistem Inevntory Nusantara Regas (NRIS)
+## Sistem Inventory Nusantara Regas (NRIS)
  © 2022 Copyright : Rifqi Adliansyah
 ## Panduan Penggunaan Sistem
 <ol>
