@@ -1,18 +1,18 @@
 ## Sistem Inevntory Nusantara Regas (NRIS)
  © 2022 Copyright : Rifqi Adliansyah
 ## Panduan Penggunaan Sistem
-
- -[Pastikan Menggunakan PHP 8 untuk menjalankan program ini]
- -[Konfigurasikan database yang akan digunakan di dalam file ".env"]
- -[Buat database untuk sistem] 
- -[Jalankan migrasi tabel dengan perintah "php artisan migrate"]
- -[Kemudian buka file DatabaseSeeder.php sesuaikan secret code yang di inginkan serta akun super admin yang ingin di seeder]
- -[Jalankan perintah "php artisan db:seed" untuk menginjeksi secret code dan akun super admin ke dalam tabel yang terdapat pada database (Sudah di hash)]
- -[Jalankan perintah "php artisan serve" untuk menjalankan website]
- -[Silahkan login sebagai superadmin dengan akun yang di seeder dari databaseeder.php , kemudian lakukan pembuatan akun untuk departemen user]
- -[Kemudian setelah berhasil membuat akun , lihat apakah gambar masuk dalam folder storage/app/data , jika berhasil kemudian lihat kemabli di folder public , cek apakah sudah terlink folder data ke folder public, apabila belum ketikan perintah "php artisan storage:link"]
- -[Sistem siap di gunakan]
-
+<ol>
+    <li>Pastikan Menggunakan PHP 8 untuk menjalankan program ini</li>
+    <li>Konfigurasikan database yang akan digunakan di dalam file ".env"</li>
+    <li>Buat database untuk sistem</li> 
+    <li>Jalankan migrasi tabel dengan perintah "php artisan migrate"</li>
+    <li>Kemudian buka file DatabaseSeeder.php sesuaikan secret code yang di inginkan serta akun super admin yang ingin di seeder</li>
+    <li>Jalankan perintah "php artisan db:seed" untuk menginjeksi secret code dan akun super admin ke dalam tabel yang terdapat pada database (Sudah di hash)</li>
+    <li>Jalankan perintah "php artisan serve" untuk menjalankan website</li>
+    <li>Silahkan login sebagai superadmin dengan akun yang di seeder dari databaseeder.php , kemudian lakukan pembuatan akun untuk departemen user</li>
+    <li>Kemudian setelah berhasil membuat akun , lihat apakah gambar masuk dalam folder storage/app/data , jika berhasil kemudian lihat kemabli di folder public , cek apakah sudah terlink folder data ke folder public, apabila belum ketikan perintah "php artisan storage:link"</li>
+    <li>Sistem siap di gunakan</li>
+</ol>
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
