@@ -69,7 +69,7 @@
                                     <input type="file" class="form-control @error('signature') is-invalid @enderror" style="padding-left: 30px;padding-bottom:30px; padding-top:20px"  placeholder="name@example.com"  name="signature">
                                     @error('signature')
                                     <div class="invalid-feedback">
-                                    Kesalahan Format Tanda Tangan. Mohon menggunakan format PNG
+                                    Tanda tangan harus diisi atau Kesalahan Format Tanda Tangan. Mohon menggunakan format PNG
                                     </div>
                                     @enderror
                                 </div>

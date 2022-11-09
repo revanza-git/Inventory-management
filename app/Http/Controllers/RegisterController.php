@@ -32,7 +32,7 @@ class RegisterController extends Controller
             'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()],
             'role' => 'required',
             'departement' => 'required',
-            'signature'=>'mimes:png'
+            'signature'=> 'required|mimes:png'
         ]);
        
         if (isset($validatedData['signature'])) {
