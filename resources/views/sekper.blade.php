@@ -66,7 +66,7 @@
                             <i class="bi bi-arrow-clockwise"></i> Edit
                         </a>
                     @endif
-                    @if (auth()->user()->role =='user' && auth()->user()->departement =='reliability')
+                    @if (auth()->user()->role =='user' && auth()->user()->departement =='sekper')
                         <a type="button" class="btn btn-sm greenAcc customMarginButton" 
                         href="{{$data->kategoriPart}}-plus-stock/{{$data->idPart}}">
                             <i class="bi bi-plus-circle"></i> Stok
