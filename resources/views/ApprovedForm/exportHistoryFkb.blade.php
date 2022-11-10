@@ -77,7 +77,7 @@
                             $num = 1+$loop->iteration;
                         @endphp
                         <td scope="row">{{$num}}</td>
-                        <td>{{$data->historyOut->noPart}}</td>
+                        <td>{{$data->noPart}}</td>
                         <td>{{$data->status}}</td>
                         <td>{{$data->timeStatus}}</td>
                         <td>{{$data->reason}}</td>

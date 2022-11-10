@@ -361,17 +361,25 @@ class UserRequestController extends Controller
     public function exportHistoryFtb(Request $request)
     {  
         $noFtb = $request->noFtb;
+        // dd($noFtb);
         $dtStockPartIn = $request->dtStockPartIn;
         $name = $request->name;
         $department = $request->department;
         $tanggalFtb = $request->tanggalFtb;
-        $history = HistoryIn::with([
-            'historyIn' => fn ($query) => $query->where('noFtb', $noFtb),
-        ])
+        $history = DB::table('history_in')
+        ->join('flow_in_part', 'history_in.id_flowInPart', '=', 'flow_in_part.id_flowInPart')
+        ->select(
+            'history_in.status',
+            'history_in.timeStatus',
+            'history_in.reason',
+            'history_in.name',
+            'flow_in_part.noPart',
+            'flow_in_part.id_flowInPart',  
+        )
+        ->where('flow_in_part.noFtb', '=', $noFtb)
         ->orderBy('id_flowInPart', 'asc')
         ->orderBy('timeStatus', 'asc')
-        ->get();
-     
+        ->get(); 
 
         // return view('ApprovedForm.exportHistoryFtb', ['list' => $history, 'noFtb' => $noFtb]);
 
@@ -507,12 +515,20 @@ class UserRequestController extends Controller
         $name = $request->name;
         $department = $request->department;
         $tanggalFkb = $request->tanggalFkb;
-        $history = HistoryOut::with([
-            'historyOut' => fn ($query) => $query->where('noFkb', $noFkb),
-        ])
-            ->orderBy('id_flowOutPart', 'asc')
-            ->orderBy('timeStatus', 'asc')
-            ->get();
+        $history = DB::table('history_out')
+        ->join('flow_out_part', 'history_out.id_flowOutPart', '=', 'flow_out_part.id_flowOutPart')
+        ->select(
+            'history_out.status',
+            'history_out.timeStatus',
+            'history_out.reason',
+            'history_out.name',
+            'flow_out_part.noPart',
+            'flow_out_part.id_flowOutPart',
+        )
+        ->where('flow_out_part.noFkb', '=', $noFkb)
+        ->orderBy('id_flowOutPart', 'asc')
+        ->orderBy('timeStatus', 'asc')
+        ->get();
 
         // dd($history);
         // return view('ApprovedForm.exportHistoryFkb', [

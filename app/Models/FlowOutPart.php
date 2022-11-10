@@ -18,7 +18,7 @@ class FlowOutPart extends Model
     }
     public function historyOut()
     {
-        return $this->belongsTo(FlowOutPart::class, 'id_flowOutPart', 'id_flowOutPart');
+        return $this->hasMany(FlowOutPart::class, 'id_flowOutPart', 'id_flowOutPart');
     }
 
     protected $guarded = ['id_flowOutPart',];
