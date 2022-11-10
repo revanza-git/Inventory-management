@@ -20,7 +20,7 @@ class FlowInPart extends Model
 
     public function historyIn()
     {
-        return $this->hasMany(FlowInPart::class, 'id_flowInPart', 'id_flowInPart');
+        return $this->hasMany(HistoryIn::class, 'id_flowInPart', 'id_flowInPart');
     }
 
     protected $guarded = ['id_flowInPart'];

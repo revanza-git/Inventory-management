@@ -3,7 +3,7 @@
 <style>
     div.dataTables_wrapper {
         width: 1200px;
-        margin: 0 auto;
+        margin: 0 ;
     }
 </style>
 
