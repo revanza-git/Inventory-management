@@ -202,6 +202,7 @@ class FlowOutPartController extends Controller
         $time = date("Y-m-d_H_i_s");
 
         $this->validate($request, [
+            'noFkb' => 'nullable',
             'noPart' => 'required|string',
             'dtStockPartOut' => 'required|date',
             'qtyStockPartOut' => 'required|numeric|min:1',
@@ -272,6 +273,7 @@ class FlowOutPartController extends Controller
         $updateDataFlowOutPart->yearStockPartOut = $request->yearStockPartOut;
         $updateDataFlowOutPart->needsStockPartOut = $request->needsStockPartOut;
         $updateDataFlowOutPart->notesPartOut = $request->notesPartOut;
+        $updateDataFlowOutPart->noFkb = $request->noFkb;
 
         // TRIGGER
         $currTime = Carbon::now()->format('d, M Y [H:i:s]');

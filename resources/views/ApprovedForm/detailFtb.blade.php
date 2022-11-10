@@ -170,6 +170,12 @@
                 <td>{{$data->priceStockPartIn}}</td>
                 <td>{{$data->needsStockPartIn}}</td>
                 <td>
+                    @if(auth()->user()->role =='admin')
+                    <a type="button" class="btn btn-sm orangeEdit margin-button" 
+                    href="/flowIn{{ucwords($data->kategoriPart)}}-edit/{{$data->id_flowInPart}}">
+                    Edit
+                   </a>
+                    @endif
                     <a type="button" class="btn btn-sm blueDetail margin-button"
                     href="/flowIn{{ucwords($data->kategoriPart)}}-detail/{{$data->id_flowInPart}}">
                         Detail

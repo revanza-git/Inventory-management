@@ -145,6 +145,7 @@ class FlowInPartController extends Controller
     public function update(Request $request, $id){
         $updateDataFlowInPart = FlowInPart::findOrFail($id);
         $this->validate($request, [
+            'noFtb'=> 'nullable',
             'noPart' => 'required|string',
             'status'=>'nullable',
             'dtStockPartIn' => 'required|date',
@@ -223,6 +224,7 @@ class FlowInPartController extends Controller
         $updateDataFlowInPart->yearStockPartIn = $request->yearStockPartIn;
         $updateDataFlowInPart->needsStockPartIn = $request->needsStockPartIn;
         $updateDataFlowInPart->notesPartIn = $request->notesPartIn;
+        $updateDataFlowInPart->noFtb = $request->noFtb;
 
         $currTime =Carbon::now()->format('d, M Y [H:i:s]');
         if($updateDataFlowInPart->firstApprovalPartIn == 'Revision'){

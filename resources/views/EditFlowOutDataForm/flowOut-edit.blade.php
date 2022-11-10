@@ -18,10 +18,20 @@
                 </ul>
             </div>
         @endif
+            @if (auth()->user()->role =='admin')
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"  name="noFkb"
+                    value="{{$data->noFkb}}" >
+                    <label for="floatingInput">No FKB</label>
+                </div>
+
+            @else
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"  name="noFtb"readonly>
-                <label for="floatingInput">No FTB</label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"  name="noFkb"
+                value="{{$data->noFkb}}" readonly>
+                <label for="floatingInput">No FKB</label>
             </div>
+            @endif
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"  name="noPart" value="{{$data->noPart}}" readonly>
                 <label for="floatingInput">No Part</label>
