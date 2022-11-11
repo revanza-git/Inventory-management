@@ -252,10 +252,11 @@ class UserRequestController extends Controller
                 ->select(
                     'flow_in_part.nameRequester',
                     'flow_in_part.departmentRequester',
-                    'flow_in_part.noFtb'
+                    'flow_in_part.noFtb',
+                    'flow_in_part.dtStockPartIn'
                 )
                 ->whereNotNull('flow_in_part.noFtb')
-                ->orderBy('flow_in_part.noFtb', 'desc')
+                ->orderBy('flow_in_part.dtStockPartIn', 'desc')
                 ->distinct('flow_in_part.noFtb')
                 ->get();
 
@@ -400,10 +401,11 @@ class UserRequestController extends Controller
         ->select(
             'flow_out_part.nameRequester',
             'flow_out_part.departmentRequester',
-            'flow_out_part.noFkb'
+            'flow_out_part.noFkb',
+            'flow_out_part.dtStockPartOut'
         )
         ->whereNotNull('flow_out_part.noFkb')
-        ->orderBy('flow_out_part.noFkb', 'desc')
+        ->orderBy('flow_out_part.dtStockPartOut', 'desc')
         ->distinct('flow_out_part.noFkb')
         ->get();
 

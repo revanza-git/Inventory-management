@@ -19,7 +19,7 @@
                     <td scope="row">{{$loop->iteration}}</td>
                     <td>
                         Form ({{$data->noFtb}}) dengan pengaju {{$data->nameRequester}}
-                            ({{$data->departmentRequester}})
+                            ({{$data->departmentRequester}}) 
                     </td>
                     <td>
                         <form action="/detailFtb" method="post">
