@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('css/customWeb.css')}}">
 
 
-    <title>Sistem Inventory (DEV)</title>
+    <title>NRIS</title>
 </head>
 
 <body>
