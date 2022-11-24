@@ -84,6 +84,15 @@
                         <i class="bi bi-info-circle"></i> Detail
                     </a>
                     
+                    @if(auth()->user()->role =='admin')
+                        <form action="deletePart/{{$data->idPart}}" method="post">
+                            @csrf
+                            <div class="mt-2">
+                                <button onclick="if (confirm('Yakin Mau Delete Data ? Tindakan ini tidak dapat dikembalikan')){return true;}else{event.stopPropagation(); event.preventDefault();};" class="btn btn-sm redDelete margin-button" type="submit"> <i class="bi bi-trash3-fill"></i> Delete
+                                </button>
+                            </div>
+                        </form>
+                    @endif
                 </td>
             </tr>
             @empty

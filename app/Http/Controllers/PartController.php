@@ -37,6 +37,12 @@ class PartController extends Controller
         return redirect('/'. $category)->with('success', 'Berhasil Menambahkan Barang Baru'); 
         // return redirect()->back()->with('success', 'Berhasil Menambahkan Barang Baru'); 
     }
+    // hapus part (induk)
+    public function deletePart($id){
+        $deletePart = Part::findOrFail($id);
+        $deletePart->delete();
+        return redirect()->back()->with('success', 'Berhasil Mendelete Akun');
+    }
 
     // TODO:INDEX OF CATEGORY
     public function showIndexElectrical(){

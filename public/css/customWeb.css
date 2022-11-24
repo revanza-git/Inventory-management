@@ -41,11 +41,20 @@
     transform:scale(1.5);
 }
 .redRej{
-    background-color:#D61C4E;
+    background-color: #FF6464;
     color:white;
 }
 .redRej:hover{
-    background-color:#A7002D;
+    background-color:#C34848;
+    color:white;
+    transform:scale(1.5);
+}
+.redDelete{
+    background-color:#D61C4E;
+    color:white;
+}
+.redDelete:hover{
+    background-color:#8A0E30;
     color:white;
     transform:scale(1.5);
 }

@@ -35,6 +35,7 @@ Route::middleware(['auth', 'cekrole:superadmin'])->group(function () {
     Route::get('/resetPassword', [RegisterController::class, 'getAccount']);
     Route::get('/showAccount/{id}', [RegisterController::class, 'showAccount']);
     Route::post('/resetPassword/{id}', [RegisterController::class, 'resetPassword']);
+    Route::post('deleteAccount/{id}', [RegisterController::class, 'deleteAccount']);
 });
 
 
@@ -73,6 +74,8 @@ Route::middleware(['auth', 'cekrole:master,admin'])->group(function () {
     Route::post('/exportCustomCategory-report', [ReportController::class, 'exportCustomCategoryReport']);
     Route::post('/exportCustomLokasi-report',[ReportController::class, 'exportCustomLokasiReport']);
     Route::post('/exportCustomAll-report', [ReportController::class, 'exportCustomAllReport']);
+
+
 });
 
 
@@ -99,6 +102,11 @@ Route::middleware(['auth', 'cekrole:head'])->group(function () {
 
 // TODO:APPROVAL
 Route::middleware(['auth', 'cekrole:admin,head,master'])->group(function () {
+    
+    // delete part
+    Route::post('deletePart/{id}', [PartController::class, 'deletePart']);
+
+
     Route::get('/flowInPendingApproval', [FlowInPendingApproval::class, 'index']);
     Route::get('/flowInPending-detail/{id}', [FlowInPendingApproval::class,'showDetail']);
     Route::get('/flowOutPendingApproval', [FlowOutPendingApproval::class, 'index']);

@@ -81,4 +81,10 @@ class RegisterController extends Controller
             return redirect()->back()->with('failed', 'Gagal Mereset Password');
         }  
     }
+
+    public function deleteAccount($id){
+        $deleteAccount = User::findOrFail($id);
+        $deleteAccount->delete();
+        return redirect()->back()->with('success', 'Berhasil Mendelete Akun');
+    }
 }
