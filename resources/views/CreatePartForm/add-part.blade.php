@@ -7,7 +7,7 @@
     </div>
 @endif
 <div class="mt-4 col-7 ">
-<h2>Tambah Barang Baru</h2>
+<h2>Tambah Barang</h2>
 </div>
 
 <div class="mt-4 col-8 ">
