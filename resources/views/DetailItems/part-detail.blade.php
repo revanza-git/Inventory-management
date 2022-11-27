@@ -12,12 +12,12 @@
 
     <div class="mt-4">
         @if($currenttotal>0)
-        <div class="mb-1 greenAdd" style="text-align: center">
+        <div class="mb-1 greenAdd" style="text-align: center; border-radius:10px">
                 <label style="display: inline-block; font-weight:bold;">Stok Sekarang :</label>
                 <p style="display: inline-block; margin-left:5px; color:white;">{{$currenttotal}}</p>
         </div>
         @else
-        <div class="mb-1 redAdd" style="text-align: center">
+        <div class="mb-1 redAdd" style="text-align: center;border-radius:10px">
                 <label style="display: inline-block; font-weight:bold;">Stok Sekarang :</label>
                 <p style="display: inline-block; margin-left:5px; color:white;">{{$currenttotal}}</p>
         </div>
