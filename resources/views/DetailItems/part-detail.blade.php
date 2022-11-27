@@ -11,12 +11,23 @@
     <hr class="bg-dark border-5 border-top border-dark rule">
 
     <div class="mt-4">
+        @if($currenttotal>0)
+        <div class="mb-1 greenAdd" style="text-align: center">
+                <label style="display: inline-block; font-weight:bold;">Stok Sekarang :</label>
+                <p style="display: inline-block; margin-left:5px; color:white;">{{$currenttotal}}</p>
+        </div>
+        @else
+        <div class="mb-1 redAdd" style="text-align: center">
+                <label style="display: inline-block; font-weight:bold;">Stok Sekarang :</label>
+                <p style="display: inline-block; margin-left:5px; color:white;">{{$currenttotal}}</p>
+        </div>
+        @endif
         <div class="mb-1">
             <label style="display: inline-block; font-weight:bold;">Nama Part :</label>
             <p style="display: inline-block; margin-left:5px; color:black;">{{ucwords($records->namaPart)}}</p>
         </div>
         <div class="mb-1">
-            <label style="display: inline-block; font-weight:bold;">Kategori Material:</label>
+            <label style="display: inline-block; font-weight:bold;">Kategori Material :</label>
                 @if($records->kategoriMaterial=='stock')
                 <p style="display: inline-block; margin-left:5px; color:black;">Material Persediaan ({{ucwords($records->kategoriMaterial)}})</p>
                 @elseif($records->kategoriMaterial=='surplus')
@@ -38,17 +49,14 @@
             <label style="display: inline-block; font-weight:bold;">Lokasi :</label>
             <p style="display: inline-block; margin-left:5px; color:black;">{{ucwords($records->lokasiPart)}}</p>
         </div>
-        <div class="mb-1">
-            <label style="display: inline-block; font-weight:bold;">Stok Sekarang:</label>
-            <p style="display: inline-block; margin-left:5px; color:black;">{{$currenttotal}}</p>
-        </div>
+       
         @if(isset($records->size))
         <div class="mb-1">
             <label style="display: inline-block; font-weight:bold;">Size :</label>
             <p style="display: inline-block; margin-left:5px; color:black;">{{$records->size}}</p>
         </div>
         @endif
-        <div class="mb-1">
+        <div class="mb-1" style="display: inline">
             <label style="display: inline-block; font-weight:bold;">Satuan :</label>
             <p style="display: inline-block; margin-left:5px; color:black;">{{$records->satuanPart}}</p>
         </div>
