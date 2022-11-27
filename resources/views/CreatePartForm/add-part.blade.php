@@ -103,7 +103,7 @@
             </div>
 
             <div class="mb-3">
-                <button class="btn btn-success" type="submit">Simpan</button>
+                <button class="btn greenAdd mt-3" type="submit">Simpan</button>
             </div>
 
     </form>
