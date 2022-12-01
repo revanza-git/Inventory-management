@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('css/customWeb.css')}}">
 
 
-    <title>SINP</title>
+    <title>SINV</title>
 </head>
 
 <body>
