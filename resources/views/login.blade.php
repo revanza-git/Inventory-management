@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{asset('css/customWeb.css')}}">
 
 
-    <title>NRIS</title>
+    <title>SINR</title>
 </head>
 
 <body>
