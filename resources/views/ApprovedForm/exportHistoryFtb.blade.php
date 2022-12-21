@@ -45,7 +45,7 @@
 
         {{-- TODO:TABEL 2 --}}
         <div class="table-responsive-sm mt-4">
-            <table id="tableFormCustom" class="table table-bordered table-hover mt-2 table-striped">
+            <table id="tableFormCustom" class="table table-bordered table-hover mt-5 table-striped">
                 <thead>
                     <tr> 
                         <th scope="col" colspan="6" class="text-center" style="background-color: #293462;color:white">Detail Histori</th> 
@@ -69,7 +69,7 @@
                         <td>{{$name}}</td>
                     </tr>
                     @php
-                        $lastIteration;
+                        $lastIteration=0;
                     @endphp
                     @forelse ($list as $data)    
                     <tr>
