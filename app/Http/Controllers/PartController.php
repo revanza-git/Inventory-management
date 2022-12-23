@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\FlowInPart;
+use App\Models\HistoryIn;
 use App\Models\Part;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -41,7 +42,14 @@ class PartController extends Controller
     public function deletePart($id){
         $deletePart = Part::findOrFail($id);
         $deletePart->delete();
-        return redirect()->back()->with('success', 'Berhasil Mendelete Akun');
+        return redirect()->back()->with('success', 'Berhasil Mendelete Part');
+    }
+    public function deleteFlowIn($id)
+    {   
+        $deleteFlowIn = FlowInPart::findOrFail($id);
+        $deleteHistoryIn = HistoryIn::where('id_flowInPart', $id)->delete();
+        $deleteFlowIn->delete();
+        return redirect('/ftb')->with('success', 'Berhasil Mendelete Data');
     }
 
     // TODO:INDEX OF CATEGORY

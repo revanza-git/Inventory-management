@@ -1,6 +1,13 @@
 @extends('layouts.sidebar')
 @section('content')
 
+@if(Session::has('status')||Session::has('statusPlusStockElect')
+    ||Session::has('statusMinusStockElect')||Session::has('statusUpdateElectrical'))
+    <div class="alert greenAdd" role="alert" id="box">
+        <div>{{Session::get('message')}}</div>
+    </div>
+
+@endif
 {{-- {{dd($list);}} --}}
 <h1>Formulir Terima Barang</h1>
 
@@ -174,9 +181,16 @@
                     <a type="button" class="btn btn-sm orangeEdit margin-button" 
                     href="/flowIn{{ucwords($data->kategoriPart)}}-edit/{{$data->id_flowInPart}}">
                     Edit
-                   </a>
+                    </a>
+                        <form action="deleteFlowIn/{{$data->id_flowInPart}}" method="post">
+                            @csrf
+                            <div class="mt-2">
+                                <button onclick="if (confirm('Yakin Mau Delete Data ? Tindakan ini tidak dapat dikembalikan')){return true;}else{event.stopPropagation(); event.preventDefault();};" class="btn btn-sm redDelete margin-button" type="submit"><i class="bi bi-trash3-fill"></i> Delete
+                                </button>
+                            </div>
+                        </form>
                     @endif
-                    <a type="button" class="btn btn-sm blueDetail margin-button"
+                    <a type="button" class="btn btn-sm blueDetail margin-button mt-2"
                     href="/flowIn{{ucwords($data->kategoriPart)}}-detail/{{$data->id_flowInPart}}">
                         Detail
                     </a>

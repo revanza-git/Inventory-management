@@ -105,7 +105,8 @@ Route::middleware(['auth', 'cekrole:admin,head,master'])->group(function () {
     
     // delete part
     Route::post('deletePart/{id}', [PartController::class, 'deletePart']);
-
+    
+    Route::post('deleteFlowIn/{id}', [PartController::class, 'deleteFlowIn']);
 
     Route::get('/flowInPendingApproval', [FlowInPendingApproval::class, 'index']);
     Route::get('/flowInPending-detail/{id}', [FlowInPendingApproval::class,'showDetail']);
