@@ -25,7 +25,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group mt-2">
-                                    <label for="mail">Email</label>
+                                    <label for="mail">Email / Username</label>
                                     <input name="email" type="text" class="form-control @error('email')
                                     is-invalid @enderror" required value="{{old('email')}}"></input>
                                     @error('email')
