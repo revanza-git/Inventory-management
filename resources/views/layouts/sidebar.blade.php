@@ -191,6 +191,12 @@
                         <li>
                             <a href="/sekper">Titipan Sekper</a>
                         </li>
+                        <li>
+                            <a href="/hsse">Titipan HSSE</a>
+                        </li>
+                        <li>
+                            <a href="/gasorf">Titipan Distibusi Gas dan Manajemen Orf</a>
+                        </li>
                     </ul>
                 </li>
                 
@@ -210,10 +216,11 @@
         <div id="content">
             <nav class="navbar navbar-expand-lg navbar-light " id="kontainer-head">
                 <div class="container-fluid" id="kontainer-head">
+                    {{-- TODO:INI BOYS --}}
                     {{-- <button type="button" id="sidebarCollapse" class="btn btn-info">
                         <i class="fas fa-th-large"></i>
-                        
                     </button> --}}
+
                     <div class="container-fluid mt-3">
                         <h3 style="color: #ffff;">
                             <marquee>Selamat Datang Kembali {{auth()->user()->name}} di Inventory Management System! Semangat Kerjanya #JanganLupaNgopi</marquee>

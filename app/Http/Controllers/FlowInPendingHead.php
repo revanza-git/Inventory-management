@@ -98,6 +98,44 @@ class FlowInPendingHead extends Controller
                 ->distinct()
                 ->get();
         }
+
+        if (Auth::user()->departement == 'hsse') {
+            $query = DB::table('flow_in_part')
+            ->join('part', 'flow_in_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_in_part.dtStockPartIn',
+                'flow_in_part.nameRequester',
+                'flow_in_part.departmentRequester',
+                'part.lokasiPart',
+                'part.kategoriMaterial',
+            )
+                ->where('flow_in_part.firstApprovalPartIn', '=', 'Approved')
+                ->where('flow_in_part.thirdApprovalDocsPartIn', '=', 'Waiting For Approval')
+                ->whereNull('flow_in_part.noFtb')
+                ->where('part.kategoriPart', '=', 'hsse')
+                ->orderBy('flow_in_part.dtStockPartIn', 'desc')
+                ->distinct()
+                ->get();
+        }
+
+        if (Auth::user()->departement == 'migas') {
+            $query = DB::table('flow_in_part')
+            ->join('part', 'flow_in_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_in_part.dtStockPartIn',
+                'flow_in_part.nameRequester',
+                'flow_in_part.departmentRequester',
+                'part.lokasiPart',
+                'part.kategoriMaterial',
+            )
+                ->where('flow_in_part.firstApprovalPartIn', '=', 'Approved')
+                ->where('flow_in_part.thirdApprovalDocsPartIn', '=', 'Waiting For Approval')
+                ->whereNull('flow_in_part.noFtb')
+                ->where('part.kategoriPart', '=', 'gasorf')
+                ->orderBy('flow_in_part.dtStockPartIn', 'desc')
+                ->distinct()
+                ->get();
+        }
         // dd($query);
         return view('ApprovalHeadPages.flowInPendingHead',['dataset' => $query]);
     }
@@ -255,6 +293,38 @@ class FlowInPendingHead extends Controller
                 ->where('flow_in_part.fourthApprovalPartIn', '=', 'Waiting For Approval')
                 ->whereNotNull('flow_in_part.noFtb')
                 ->where('part.kategoriPart', '=', 'sekper')
+                ->distinct()
+                ->get();
+        }
+
+        if (Auth::user()->departement == 'hsse') {
+            $query = DB::table('flow_in_part')
+            ->join('part', 'flow_in_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_in_part.nameRequester',
+                'flow_in_part.departmentRequester',
+                'flow_in_part.noFtb'
+            )
+                ->where('flow_in_part.thirdApprovalPartIn', '=', 'Waiting For Approval')
+                ->where('flow_in_part.fourthApprovalPartIn', '=', 'Waiting For Approval')
+                ->whereNotNull('flow_in_part.noFtb')
+                ->where('part.kategoriPart', '=', 'hsse')
+                ->distinct()
+                ->get();
+        }
+
+        if (Auth::user()->departement == 'migas') {
+            $query = DB::table('flow_in_part')
+            ->join('part', 'flow_in_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_in_part.nameRequester',
+                'flow_in_part.departmentRequester',
+                'flow_in_part.noFtb'
+            )
+                ->where('flow_in_part.thirdApprovalPartIn', '=', 'Waiting For Approval')
+                ->where('flow_in_part.fourthApprovalPartIn', '=', 'Waiting For Approval')
+                ->whereNotNull('flow_in_part.noFtb')
+                ->where('part.kategoriPart', '=', 'gasorf')
                 ->distinct()
                 ->get();
         }

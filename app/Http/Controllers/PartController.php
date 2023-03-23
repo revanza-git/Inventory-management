@@ -138,6 +138,22 @@ class PartController extends Controller
         return view('sekper', ['sekperList' => $queryAll]);
     }
 
+    public function showIndexHSSE(){
+        $queryAll =
+            Part::select('idPart', 'namaPart', 'descPart', 'lokasiPart', 'kategoriPart', 'size', 'kategoriMaterial')
+            ->where('kategoriPart', '=', 'hsse')
+            ->get();
+        return view('hsse', ['hsseList' => $queryAll]);
+    }
+
+    public function showIndexGasorf()
+    {
+        $queryAll =
+            Part::select('idPart', 'namaPart', 'descPart', 'lokasiPart', 'kategoriPart', 'size', 'kategoriMaterial')
+            ->where('kategoriPart', '=', 'gasorf')
+            ->get();
+        return view('gasorf', ['gasorfList' => $queryAll]);
+    }
 
     public function showRecords($id){
         $queryFindRecords = Part::findOrFail($id);

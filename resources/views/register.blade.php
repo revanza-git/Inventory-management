@@ -61,6 +61,8 @@
                                         <option value="technology">Dept.IT</option>
                                         <option value="sekper">Dept.Sekretaris Perusahaan</option>
                                         <option value="procurement">Dept.Procurement</option>
+                                        <option value="hsse">Dept.HSSE</option>
+                                        <option value="migas">Dept. Distribusi Gas dan Manajemen ORF</option>
                                     </select>
                                 </div>
                                 <label class="mt-3">Tanda Tangan/Paraf (PNG)</label>
