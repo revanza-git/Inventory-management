@@ -44,6 +44,8 @@
                         <option value="tiyum">Titipan Layanan Umum</option>
                         <option value="scrayum">Scrap Layanan Umum</option>
                         <option value="sekper">Titipan Sekretaris Perusahaan</option>
+                        <option value="hsse">Titipan HSSE</option>
+                        <option value="gasorf">Titipan Distribusi Gas dan Manajemen Orf</option>
                     @endif
                     @if (auth()->user()->role =='user' && auth()->user()->departement =='reliability')
                         <option value="electrical">Electrical</option>
@@ -63,6 +65,12 @@
                     @endif
                     @if (auth()->user()->role =='user' && auth()->user()->departement =='sekper')
                         <option value="sekper">Titipan Sekretaris Perusahaan</option>
+                    @endif
+                    @if (auth()->user()->role =='user' && auth()->user()->departement =='hsse')
+                        <option value="hsse">Titipan HSSE</option>
+                    @endif
+                    @if (auth()->user()->role =='user' && auth()->user()->departement =='migas')
+                        <option value="gasorf">Titipan Distribusi Gas dan Manajemen Orf</option>
                     @endif
                 </select>
             </div>

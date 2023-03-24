@@ -62,7 +62,7 @@
                     @csrf
                     <div class="mb-10">
                             <div class="form-group">
-                                <label>Email</label>
+                                <label>Email / Username</label>
                                 <input name="email" type="text" class="form-control"></input>
                             </div>
                             <div class="form-group mb-5">

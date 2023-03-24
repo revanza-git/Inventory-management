@@ -18,7 +18,7 @@
             <tr>
                 <th scope="col">No</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Email</th>
+                <th scope="col">Email / Username</th>
                 <th scope="col">Role</th>
                 <th scope="col">Departement</th>
                 <th scope="col">Aksi</th>
@@ -30,8 +30,12 @@
                 <td scope="row">{{$loop->iteration}}</td>
                 <td>{{$data->name}}</td>
                 <td>{{$data->email}}</td>
-                <td>{{$data->role}}</td>
-                <td>{{$data->departement}}</td>
+                <td>{{$data->role}}</td>  
+                @if ($data->departement == 'migas')
+                    <td>Distribusi Gas ORF</td>
+                @else
+                    <td>{{$data->departement}}</td>
+                @endif
                 <td>
                     <a type="button" class="btn btn-sm orangeEdit " 
                         href="showAccount/{{$data->id}}">

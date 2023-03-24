@@ -181,6 +181,78 @@ class UserRequestController extends Controller
                 ->get();
         }
 
+        if (Auth::user()->departement == 'hsse') {
+            $query = DB::table('flow_in_part')
+            ->join('part', 'flow_in_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_in_part.dtStockPartIn',
+                'flow_in_part.nameRequester',
+                'flow_in_part.departmentRequester',
+                'part.lokasiPart',
+                'part.kategoriMaterial'
+            )
+                ->whereNull('flow_in_part.noFtb')
+                ->where('flow_in_part.fourthApprovalPartIn', '!=', 'Approved')
+                ->where('part.kategoriPart', '=', 'hsse')
+                ->where('nameRequester', '=', $name)
+                ->orderBy('flow_in_part.dtStockPartIn', 'desc')
+                ->distinct()
+                ->get();
+
+            $queryOut = DB::table('flow_out_part')
+            ->join('part', 'flow_out_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_out_part.dtStockPartOut',
+                'flow_out_part.nameRequester',
+                'flow_out_part.departmentRequester',
+                'part.lokasiPart',
+                'part.kategoriMaterial'
+            )
+                ->whereNull('flow_out_part.noFkb')
+                ->where('flow_out_part.fourthApprovalPartOut', '!=', 'Approved')
+                ->where('part.kategoriPart', '=', 'hsse')
+                ->where('nameRequester', '=', $name)
+                ->orderBy('flow_out_part.dtStockPartOut', 'desc')
+                ->distinct()
+                ->get();
+        }
+
+        if (Auth::user()->departement == 'migas') {
+            $query = DB::table('flow_in_part')
+            ->join('part', 'flow_in_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_in_part.dtStockPartIn',
+                'flow_in_part.nameRequester',
+                'flow_in_part.departmentRequester',
+                'part.lokasiPart',
+                'part.kategoriMaterial'
+            )
+                ->whereNull('flow_in_part.noFtb')
+                ->where('flow_in_part.fourthApprovalPartIn', '!=', 'Approved')
+                ->where('part.kategoriPart', '=', 'gasorf')
+                ->where('nameRequester', '=', $name)
+                ->orderBy('flow_in_part.dtStockPartIn', 'desc')
+                ->distinct()
+                ->get();
+
+            $queryOut = DB::table('flow_out_part')
+            ->join('part', 'flow_out_part.idPart', '=', 'part.idPart')
+            ->select(
+                'flow_out_part.dtStockPartOut',
+                'flow_out_part.nameRequester',
+                'flow_out_part.departmentRequester',
+                'part.lokasiPart',
+                'part.kategoriMaterial'
+            )
+                ->whereNull('flow_out_part.noFkb')
+                ->where('flow_out_part.fourthApprovalPartOut', '!=', 'Approved')
+                ->where('part.kategoriPart', '=', 'gasorf')
+                ->where('nameRequester', '=', $name)
+                ->orderBy('flow_out_part.dtStockPartOut', 'desc')
+                ->distinct()
+                ->get();
+        }
+
         return view('UserRequestPages.userRequest', ['list'=>$query,'listOut'=>$queryOut]);
     }
 

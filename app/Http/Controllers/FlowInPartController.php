@@ -268,8 +268,9 @@ class FlowInPartController extends Controller
     }
 
     public function showDetail($id){
+       
         $queryFindRecords = FlowInPart::findOrFail($id);
-
+       
         $idPart = $queryFindRecords->idPart;
         $queryFindPart = Part::find($idPart);
         $nama = $queryFindPart->namaPart;

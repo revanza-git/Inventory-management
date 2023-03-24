@@ -89,6 +89,7 @@ Route::middleware(['auth', 'cekrole:head'])->group(function () {
     Route::post('/detailflowInFinalHead', [FlowInPendingHead::class, 'showDetailFinalFlowIn']);
     Route::post('/approveFlowInFinalHead', [FlowInPendingHead::class, 'approveFlowInFinal']);
 
+    
     Route::get('/flowOutPendingHead', [FlowOutPendingHead::class, 'index']);
     Route::get('/aprroveOutHead/{date}/{name}/{lokasi}/{department}/{material}', [FlowOutPendingHead::class, 'showAllPendingOut']);
     Route::post('/approveAllOutHead', [FlowOutPendingHead::class, 'approveAllOut']);
@@ -392,6 +393,46 @@ Route::middleware(['auth', 'cekrole:user,head,admin,master'])->group(function ()
     Route::get('/flowOutSekper-edit/{id}', [FlowOutPartController::class, 'edit']);
     Route::put('/flowOutSekper/{id}', [FlowOutPartController::class, 'update']);
     Route::get('/flowOutSekper-detail/{id}', [FlowOutPartController::class, 'showDetail']);
+
+
+    // HSSE
+    Route::get('/hsse', [PartController::class, 'showIndexHSSE']);
+    Route::get('/hsse-detail/{id}', [PartController::class, 'showRecords']);
+    Route::post('/hsse-trace/{id}', [PartController::class, 'traceRecords']);
+    Route::get('/hsse-edit/{id}', [PartController::class, 'edit']);
+    Route::put('/hsse/{id}', [PartController::class, 'update']);
+
+    Route::get('/hsse-plus-stock/{id}', [FlowInPartController::class, 'createDataPlusStock']);
+    Route::post('/hsse-plus-stock/{id}', [FlowInPartController::class, 'storeDataPlusStock']);
+    Route::get('/flowInHsse-edit/{id}', [FlowInPartController::class, 'edit']);
+    Route::put('/flowInHsse/{id}', [FlowInPartController::class, 'update']);
+    Route::get('/flowInHsse-detail/{id}', [FlowInPartController::class, 'showDetail']);
+
+    Route::get('/hsse-minus-stock/{id}', [FlowOutPartController::class, 'createDataMinusStock']);
+    Route::post('/hsse-minus-stock/{id}', [FlowOutPartController::class, 'storeDataMinusStock']);
+    Route::get('/flowOutHsse-edit/{id}', [FlowOutPartController::class, 'edit']);
+    Route::put('/flowOutHsse/{id}', [FlowOutPartController::class, 'update']);
+    Route::get('/flowOutHsse-detail/{id}', [FlowOutPartController::class, 'showDetail']);
+
+    
+    // Migas ORF
+    Route::get('/gasorf', [PartController::class, 'showIndexGasorf']);
+    Route::get('/gasorf-detail/{id}', [PartController::class, 'showRecords']);
+    Route::post('/gasorf-trace/{id}', [PartController::class, 'traceRecords']);
+    Route::get('/gasorf-edit/{id}', [PartController::class, 'edit']);
+    Route::put('/gasorf/{id}', [PartController::class, 'update']);
+
+    Route::get('/gasorf-plus-stock/{id}', [FlowInPartController::class, 'createDataPlusStock']);
+    Route::post('/gasorf-plus-stock/{id}', [FlowInPartController::class, 'storeDataPlusStock']);
+    Route::get('/flowInGasorf-edit/{id}', [FlowInPartController::class, 'edit']);
+    Route::put('/flowInGasorf/{id}', [FlowInPartController::class, 'update']);
+    Route::get('/flowInGasorf-detail/{id}', [FlowInPartController::class, 'showDetail']);
+
+    Route::get('/gasorf-minus-stock/{id}', [FlowOutPartController::class, 'createDataMinusStock']);
+    Route::post('/gasorf-minus-stock/{id}', [FlowOutPartController::class, 'storeDataMinusStock']);
+    Route::get('/flowOutGasorf-edit/{id}', [FlowOutPartController::class, 'edit']);
+    Route::put('/flowOutGasorf/{id}', [FlowOutPartController::class, 'update']);
+    Route::get('/flowOutGasorf-detail/{id}', [FlowOutPartController::class, 'showDetail']);
 });
 
 
