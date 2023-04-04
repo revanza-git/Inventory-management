@@ -36,6 +36,8 @@
                                                                         <option value="tiyum">Titipan Layanan Umum</option>
                                                                         <option value="scrayum">Scrap Layanan Umum</option>
                                                                         <option value="sekper">Titipan Sekretaris Perusahaan</option>
+                                                                        <option value="hsse">HSSE</option>
+                                                                        <option value="gasorf">Distribusi Gas dan Orf</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="mb-3">
