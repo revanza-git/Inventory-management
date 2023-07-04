@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /public/data
+/public/web.config
 /storage/app/data
 /storage/*.key
 /vendor
