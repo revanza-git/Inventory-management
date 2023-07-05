@@ -82,12 +82,9 @@
                     </div>
                     </form>
                     <div style="margin-top: 50px;">
-                        <a href="https://www.linkedin.com/in/rifqi-adliansyah" target="_blank">
-                            © 2022 Copyright : Rifqi Adliansyah
+                        <a href="https://nusantararegas.com" target="_blank">
+                            © 2022 Copyright : Nusantara Regas
                         </a> / 
-                        <a href="https://wa.me/+6282111163397" target="_blank">
-                            <i class="bi bi-whatsapp"></i>
-                        </a>
                     </div>
                 </div>
                 
