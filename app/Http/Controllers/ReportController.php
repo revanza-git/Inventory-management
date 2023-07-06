@@ -10,6 +10,7 @@ use Doctrine\DBAL\Schema\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Romans\Filter\IntToRoman;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class ReportController extends Controller
 {
@@ -40,6 +41,7 @@ class ReportController extends Controller
     }
 
     public function showReport(Request $request){
+        ;
         $kategoriPart = $request->kategoriPart;
         $triwulan = $request->triwulan;
         $year = $request->year;
@@ -57,7 +59,7 @@ class ReportController extends Controller
         }
         if ($triwulan == 2) {
             $firstRange = date($year . '-04-' . '01');
-            $secondRange = date($year . '-06-' . '31');
+            $secondRange = date($year . '-06-' . '30');
         }
         if ($triwulan == 3) {
             $firstRange = date($year . '-07-' . '01');
