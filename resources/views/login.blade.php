@@ -82,7 +82,9 @@
                     </div>
                     </form>
                     <div style="margin-top: 50px;">
-                        
+                        <a href="https://nusantararegas.com" target="_blank">
+                            © 2023 Copyright : Nusantara Regas
+                        </a>
                     </div>
                 </div>
                 

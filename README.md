@@ -1,5 +1,5 @@
 ## Sistem Inventory Nusantara Regas (NRIS)
- © 2022 Copyright : Rifqi Adliansyah
+ © 2023 Copyright : Nusantara Regas
 ## Panduan Penggunaan Sistem
 <ol>
     <li>Pastikan Menggunakan PHP 8 untuk menjalankan program ini</li>
