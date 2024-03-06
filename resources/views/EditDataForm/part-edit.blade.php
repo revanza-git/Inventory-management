@@ -19,6 +19,18 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="form-floating mb-3">
+                <select name="kategoriMaterial" class="form-select form-control" aria-label="Default select example" id="dropdown">
+                    <option value="stock">Stock</option>
+                    <option value="surplus">Surplus Proyek</option>
+                    <option value="dead">Dead Stock</option>
+                    <option value="rongsokan">Rongsokan</option>
+                    <option value="charges">Direct Charges</option>
+                </select>
+                <label for="dropdown">Kategori Material</label>
+            </div>
+
             <div class="form-floating mb-3">
                 <textarea class="form-control @error('descPart') is-invalid @enderror" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" 
                 name="descPart" 
@@ -30,32 +42,35 @@
                 </div>
                 @enderror
             </div>
+
             <div class="form-floating mb-3">
-                <input type="text" class="form-control @error('lokasiPart') is-invalid @enderror" id="floatingInput" placeholder="nomor Part" name="lokasiPart" 
-                value="{{$data->lokasiPart}}">
-                <label for="floatingInput">Lokasi Gudang</label>
-                @error('lokasiPart')
-                <div class="invalid-feedback">
-                Mohon maaf, lokasi part tidak boleh kosong !
-                </div>
-                @enderror
+                <select name="lokasiPart" class="form-select form-control" aria-label="Default select example" id="dropdown">
+                    <option value="Gudang Sunter" selected>Gudang Sunter</option>
+                    <option value="Gudang Orf" selected>Gudang ORF</option>
+                </select>
+                <label for="dropdown">Lokasi</label>
             </div>
+
             @if(!is_null($data->size))
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"  name="size" type="text" value="{{$data->size}}">
                 <label for="floatingInput">Size</label>
             </div>
             @endif
-            <div class="mb-3">
-                <label for="floatingInput">Satuan</label>
-               <input type="text" class="form-control  @error('satuanPart') is-invalid @enderror" id="floatingInput" placeholder="Satuan"  name="satuanPart" 
-                value="{{$data->satuanPart}}" oninput="this.value = this.value.toUpperCase()">
-                @error('lokasiPart')
-                <div class="invalid-feedback">
-                Mohon maaf, satuan part tidak boleh kosong !
-                </div>
-                @enderror
+
+            <div class="form-floating mb-3">
+                <select name="satuanPart" class="form-select form-control" aria-label="Default select example" id="dropdown">
+                    <option value="EA"selected>EA</option>
+                    <option value="SET">SET</option>
+                    <option value="PCS">PCS</option>
+                    <option value="ROLL">ROLL</option>
+                    <option value="M">M</option>
+                    <option value="LOT">LOT</option>
+                    <option value="BOX">BOX</option>
+                </select>
+                <label for="dropdown">Satuan</label>
             </div>
+
             <div class="form-floating mb-3">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" 
                 name="keterangan">{{$data->keterangan}}</textarea>

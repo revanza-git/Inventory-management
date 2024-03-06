@@ -29,7 +29,7 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required|unique:users',
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()],
+            'password' => ['required', Password::min(6)],
             'role' => 'required',
             'departement' => 'required',
             'signature'=> 'required|mimes:png'
@@ -60,26 +60,44 @@ class RegisterController extends Controller
                             ->get();
         return view('resetPassword', ['accountlList' => $queryAllAccount]);
     }
+    
     public function showAccount($id){
         $user = User::findOrFail($id);
         $link = 'detailUser';
         return view($link, ['data' => $user]);
-    } 
-    public function resetPassword(Request $request,$id){
-       $user = User::findOrFail($id);
-       $validatedData = $request->validate([
-            'password' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()],
-            'confirmPassword' => ['required', Password::min(8)->mixedCase()->numbers()->symbols()]
-       ]);
-        if($validatedData['password']== $validatedData['confirmPassword']){
-            $validatedData['password'] = Hash::make($validatedData['password']);
-            $user->password = $validatedData['password'];
+    }
+
+    public function editEmail($id){
+        $user = User::findOrFail($id);
+        $link = 'editEmail';
+        return view($link, ['data' => $user]);
+    }
+
+    public function resetPassword(Request $request, $id){
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'email' => 'sometimes|required|email|unique:users,email',
+            'password' => ['sometimes', 'required', Password::min(6)],
+            'confirmPassword' => ['sometimes', 'required', Password::min(6), 'same:password'],
+        ]);
+
+        if ($request->has('email')) {
+            // Update email
+            $user->email = $request->input('email');
+            $user->save();
+            return redirect()->back()->with('success', 'Berhasil Merubah Email');
+        }
+
+        if ($request->filled('password') && $request->filled('confirmPassword')) {
+            // Reset password
+            $validatedPassword = Hash::make($request->input('password'));
+            $user->password = $validatedPassword;
             $user->save();
             return redirect()->back()->with('success', 'Berhasil Mereset Password');
         }
-        else{
-            return redirect()->back()->with('failed', 'Gagal Mereset Password');
-        }  
+
+        return redirect()->back()->with('failed', 'Gagal Merubah Email atau Mereset Password');
     }
 
     public function deleteAccount($id){

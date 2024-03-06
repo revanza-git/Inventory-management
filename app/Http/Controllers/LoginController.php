@@ -49,6 +49,12 @@ class LoginController extends Controller
             if ($role == 'migas') {
                return redirect()->intended('/gasorf');
             }
+            if ($role == 'transportasi') {
+               return redirect()->intended('/transportasi');
+            }
+            if ($role == 'bisnis') {
+               return redirect()->intended('/bisnis');
+            }
          }
          if (Auth::user()->role == 'admin') {
             return redirect()->intended('/flowInPendingApprovalDate');

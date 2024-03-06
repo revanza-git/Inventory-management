@@ -19,6 +19,18 @@
                 </div>
                 @enderror
             </div>
+
+            <div class="form-floating mb-3">
+                <select name="kategoriMaterial" class="form-select form-control" aria-label="Default select example" id="dropdown">
+                    <option value="stock">Stock</option>
+                    <option value="surplus">Surplus Proyek</option>
+                    <option value="dead">Dead Stock</option>
+                    <option value="rongsokan">Rongsokan</option>
+                    <option value="charges">Direct Charges</option>
+                </select>
+                <label for="dropdown">Kategori Material</label>
+            </div>
+
             <div class="form-floating mb-3">
                 <textarea class="form-control @error('descPart') is-invalid @enderror" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" 
                 name="descPart" 

@@ -22,10 +22,12 @@
                 <p style="display: inline-block; margin-left:5px; color:white;">{{$currenttotal}}</p>
         </div>
         @endif
+
         <div class="mb-1">
             <label style="display: inline-block; font-weight:bold;">Nama Part :</label>
             <p style="display: inline-block; margin-left:5px; color:black;">{{ucwords($records->namaPart)}}</p>
         </div>
+
         <div class="mb-1">
             <label style="display: inline-block; font-weight:bold;">Kategori Material :</label>
                 @if($records->kategoriMaterial=='stock')

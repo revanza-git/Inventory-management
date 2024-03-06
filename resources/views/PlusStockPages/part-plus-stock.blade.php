@@ -63,6 +63,22 @@
                 <input type="number" class="form-control @error('yearStockPartIn') is-invalid @enderror" id="floatingInput" placeholder="name@example.com" min="2000" required name="yearStockPartIn" value="{{old('yearStockPartIn')}}">
                 <label for="floatingInput">Tahun Perolehan</label>
             </div>
+
+            <!-- <div class="input-group control-group lst increment">
+                <input type="file" name="filePhotoPartIn[]" class="myfrm form-control">
+                <div class="input-group-btn">
+                    <button class="btn btn-success" id="addfile" type="button">+</button>
+                </div>
+            </div>
+            <div class="clone" id="morefile" style="display: none">
+                <div class="control-group lst input-group" style="margin-top: 10px">
+                    <input type="file" name="filePhotoPartIn[]" class="myfrm form-control">
+                    <div class="input-group-btn">
+                        <button class="btn btn-danger" id="removefile" type="button">-</button>
+                    </div>
+                </div>
+            </div> -->
+
             <label > Upload File Bukti Foto (JPG/PNG/PDF)</label>
             <div class="form-floating mb-3 col-5">
                 <input type="file" class="form-control @error('filePhotoPartIn') is-invalid @enderror" style="padding-left: 30px;padding-bottom:30px; padding-top:20px"  placeholder="name@example.com"  name="filePhotoPartIn">
@@ -115,6 +131,16 @@
         $("#closeButton").on('click', function(){
             $("#myModal").modal('hide');
         })
+    });
+
+    $(document).ready(function() {
+        $("#addfile").click(function() {
+            var html = $(".clone").html();
+            $(".increment").after(html);
+        });
+        $("body").on("click","#removefile", function() {
+            $(this).parents(".control-group").remove();
+        });
     });
 
 </script>

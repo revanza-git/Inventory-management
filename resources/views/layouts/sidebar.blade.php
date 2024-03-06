@@ -197,6 +197,12 @@
                         <li>
                             <a href="/gasorf">Titipan Distibusi Gas dan Manajemen Orf</a>
                         </li>
+                        <li>
+                            <a href="/transportasi">Transportasi LNG & Operasional FSRU</a>
+                        </li>
+                        <li>
+                            <a href="/bisnis">Perencanaan & Pengembangan Bisnis</a>
+                        </li>
                     </ul>
                 </li>
                 

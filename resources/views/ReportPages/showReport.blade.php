@@ -1,6 +1,45 @@
 @extends('layouts.sidebar')
 @section('content')
-<h2 style="margin-left: 10px">Laporan {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2>
+
+<?php
+    function cat($cat) {
+        if($cat=='provision') {
+            return "Provision Tie In";
+        }
+        else if($cat=='scrap') {
+            return "Scrap R & Q";
+        }
+        else if($cat=='technology') {
+            return "Titipan IT";
+        }
+        else if($cat=='tiyum') {
+            return "Titipan Layanan Umum";
+        }
+        else if($cat=='scrayum') {
+            return "Scrap Layanan Umum";
+        }
+        else if($cat=='sekper') {
+            return "Titipan Sekretaris Perusahaan";
+        }
+        else if($cat=='hsse') {
+            return "HSSE";
+        }
+        else if($cat=='gasorf') {
+            return "Titipan Distribusi Gas dan ORF";
+        }
+        else if($cat=='transportasi') {
+            return "Transportasi LNG & Operasional FSRU";
+        }
+        else if($cat=='bisnis') {
+            return "Perencanaan & Pengembangan Bisnis";
+        }
+        else {
+            return ucwords($cat);
+        }
+    }
+?>
+
+<h2 style="margin-left: 10px">Laporan {{cat($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2>
 
 <style>
     div.dataTables_wrapper {

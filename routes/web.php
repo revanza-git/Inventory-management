@@ -33,9 +33,14 @@ Route::middleware(['auth', 'cekrole:superadmin'])->group(function () {
     Route::get('/register', [RegisterController::class, 'index']);
     Route::post('/register', [RegisterController::class, 'store']);
     Route::get('/resetPassword', [RegisterController::class, 'getAccount']);
+
+    Route::get('/editEmail/{id}', [RegisterController::class, 'editEmail']);
+
     Route::get('/showAccount/{id}', [RegisterController::class, 'showAccount']);
     Route::post('/resetPassword/{id}', [RegisterController::class, 'resetPassword']);
     Route::post('deleteAccount/{id}', [RegisterController::class, 'deleteAccount']);
+
+    
 });
 
 
@@ -108,6 +113,7 @@ Route::middleware(['auth', 'cekrole:admin,head,master'])->group(function () {
     Route::post('deletePart/{id}', [PartController::class, 'deletePart']);
     
     Route::post('deleteFlowIn/{id}', [PartController::class, 'deleteFlowIn']);
+    Route::post('deleteFlowOut/{id}', [PartController::class, 'deleteFlowOut']);
 
     Route::get('/flowInPendingApproval', [FlowInPendingApproval::class, 'index']);
     Route::get('/flowInPending-detail/{id}', [FlowInPendingApproval::class,'showDetail']);
@@ -433,6 +439,45 @@ Route::middleware(['auth', 'cekrole:user,head,admin,master'])->group(function ()
     Route::get('/flowOutGasorf-edit/{id}', [FlowOutPartController::class, 'edit']);
     Route::put('/flowOutGasorf/{id}', [FlowOutPartController::class, 'update']);
     Route::get('/flowOutGasorf-detail/{id}', [FlowOutPartController::class, 'showDetail']);
+
+    // Transportasi LNG & Operasional FSRU
+    Route::get('/transportasi', [PartController::class, 'showIndexTransportasi']);
+    Route::get('/transportasi-detail/{id}', [PartController::class, 'showRecords']);
+    Route::post('/transportasi-trace/{id}', [PartController::class, 'traceRecords']);
+    Route::get('/transportasi-edit/{id}', [PartController::class, 'edit']);
+    Route::put('/transportasi/{id}', [PartController::class, 'update']);
+
+    Route::get('/transportasi-plus-stock/{id}', [FlowInPartController::class, 'createDataPlusStock']);
+    Route::post('/transportasi-plus-stock/{id}', [FlowInPartController::class, 'storeDataPlusStock']);
+    Route::get('/flowInTransportasi-edit/{id}', [FlowInPartController::class, 'edit']);
+    Route::put('/flowInTransportasi/{id}', [FlowInPartController::class, 'update']);
+    Route::get('/flowInTransportasi-detail/{id}', [FlowInPartController::class, 'showDetail']);
+
+    Route::get('/transportasi-minus-stock/{id}', [FlowOutPartController::class, 'createDataMinusStock']);
+    Route::post('/transportasi-minus-stock/{id}', [FlowOutPartController::class, 'storeDataMinusStock']);
+    Route::get('/flowOutTransportasi-edit/{id}', [FlowOutPartController::class, 'edit']);
+    Route::put('/flowOutTransportasi/{id}', [FlowOutPartController::class, 'update']);
+    Route::get('/flowOutTransportasi-detail/{id}', [FlowOutPartController::class, 'showDetail']);
+
+    // Perencanaan & Pengembangan Bisnis
+    Route::get('/bisnis', [PartController::class, 'showIndexBisnis']);
+    Route::get('/bisnis-detail/{id}', [PartController::class, 'showRecords']);
+    Route::post('/bisnis-trace/{id}', [PartController::class, 'traceRecords']);
+    Route::get('/bisnis-edit/{id}', [PartController::class, 'edit']);
+    Route::put('/bisnis/{id}', [PartController::class, 'update']);
+
+    Route::get('/bisnis-plus-stock/{id}', [FlowInPartController::class, 'createDataPlusStock']);
+    Route::post('/bisnis-plus-stock/{id}', [FlowInPartController::class, 'storeDataPlusStock']);
+    Route::get('/flowInBisnis-edit/{id}', [FlowInPartController::class, 'edit']);
+    Route::put('/flowInBisnis/{id}', [FlowInPartController::class, 'update']);
+    Route::get('/flowInBisnis-detail/{id}', [FlowInPartController::class, 'showDetail']);
+
+    Route::get('/bisnis-minus-stock/{id}', [FlowOutPartController::class, 'createDataMinusStock']);
+    Route::post('/bisnis-minus-stock/{id}', [FlowOutPartController::class, 'storeDataMinusStock']);
+    Route::get('/flowOutBisnis-edit/{id}', [FlowOutPartController::class, 'edit']);
+    Route::put('/flowOutBisnis/{id}', [FlowOutPartController::class, 'update']);
+    Route::get('/flowOutBisnis-detail/{id}', [FlowOutPartController::class, 'showDetail']);
+
 });
 
 

@@ -12,11 +12,10 @@
 @endif
 <form action="/resetPassword/{{$data->id}}" method="POST">
      @csrf
-     <div class="col-5">
         <div class="form-group mt-4">
             <label for="password">Create New Password</label>
-            <input name="password" type="password" class="form-control" id="password" @error('password')
-            is-invalid @enderror" required onkeyup='check();'>
+            <input name="password" type="password" class="form-control @error('password')
+            is-invalid @enderror" id="password" required onkeyup='check();'>
                 @error('password')
                 <div class="invalid-feedback">
                     {{$message}}

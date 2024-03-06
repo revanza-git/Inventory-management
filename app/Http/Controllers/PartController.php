@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\FlowOutPart;
+use App\Models\HistoryOut;
+
+use App\Models\User;
+use Notification;
+use App\Notifications\SendEmailNotification;
+
 class PartController extends Controller
 {
     public function createPart()
@@ -50,6 +57,14 @@ class PartController extends Controller
         $deleteHistoryIn = HistoryIn::where('id_flowInPart', $id)->delete();
         $deleteFlowIn->delete();
         return redirect('/ftb')->with('success', 'Berhasil Mendelete Data');
+    }
+    
+    public function deleteFlowOut($id)
+    {   
+        $deleteFlowOut = FlowOutPart::findOrFail($id);
+        $deleteHistoryOut = HistoryOut::where('id_flowOutPart', $id)->delete();
+        $deleteFlowOut->delete();
+        return redirect('/fkb')->with('success', 'Berhasil Mendelete Data');
     }
 
     // TODO:INDEX OF CATEGORY
@@ -155,6 +170,24 @@ class PartController extends Controller
         return view('gasorf', ['gasorfList' => $queryAll]);
     }
 
+    public function showIndexTransportasi()
+    {
+        $queryAll =
+            Part::select('idPart', 'namaPart', 'descPart', 'lokasiPart', 'kategoriPart', 'size', 'kategoriMaterial')
+            ->where('kategoriPart', '=', 'transportasi')
+            ->get();
+        return view('transportasi', ['transportasiList' => $queryAll]);
+    }
+
+    public function showIndexBisnis()
+    {
+        $queryAll =
+            Part::select('idPart', 'namaPart', 'descPart', 'lokasiPart', 'kategoriPart', 'size', 'kategoriMaterial')
+            ->where('kategoriPart', '=', 'bisnis')
+            ->get();
+        return view('bisnis', ['bisnisList' => $queryAll]);
+    }
+
     public function showRecords($id){
         $queryFindRecords = Part::findOrFail($id);
        
@@ -210,12 +243,14 @@ class PartController extends Controller
         $part = Part::findOrFail($id);
         $this->validate($request, [
             'namaPart' => 'required|string',
+            'kategoriMaterial' => 'required',
             'descPart' => 'required|string',
             'satuanPart' => 'required|string',
             'lokasiPart' => 'required|string',
             'size'=>'nullable'
         ]);
         $part->namaPart = ucwords($request->namaPart);
+        $part->kategoriMaterial = $request->kategoriMaterial;
         $part->descPart = $request->descPart;
         $part->lokasiPart = ucwords($request->lokasiPart);
         $part->satuanPart = $request->satuanPart;

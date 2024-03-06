@@ -7,17 +7,55 @@
     }
 </style>
 
+<?php
+    function cat($cat) {
+        if($cat=='provision') {
+            return "Provision Tie In";
+        }
+        else if($cat=='scrap') {
+            return "Scrap R & Q";
+        }
+        else if($cat=='technology') {
+            return "Titipan IT";
+        }
+        else if($cat=='tiyum') {
+            return "Titipan Layanan Umum";
+        }
+        else if($cat=='scrayum') {
+            return "Scrap Layanan Umum";
+        }
+        else if($cat=='sekper') {
+            return "Titipan Sekretaris Perusahaan";
+        }
+        else if($cat=='hsse') {
+            return "HSSE";
+        }
+        else if($cat=='gasorf') {
+            return "Titipan Distribusi Gas dan ORF";
+        }
+        else if($cat=='transportasi') {
+            return "Transportasi LNG & Operasional FSRU";
+        }
+        else if($cat=='bisnis') {
+            return "Perencanaan & Pengembangan Bisnis";
+        }
+        else {
+            return ucwords($cat);
+        }
+    }
+?>
+
 {{-- KONDISI JUDUL AJAAA --}}
 @if($material == 'stock')
-    <h2>Laporan Material Persediaan ({{ucwords($material)}}) {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2>
+    <h2>Laporan Material Persediaan ({{ucwords($material)}}) {{cat($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2>
 @elseif($material == 'surplus')
-    <h2>Laporan Material Projek / ({{ucwords($material)}}) Projek {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2>
+    <h2>Laporan Material Projek / ({{ucwords($material)}}) Projek {{ucwcatords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2>
 @elseif($material == 'dead')
-    <h3>Laporan Material Persediaan Mati / ({{ucwords($material)}}) Stock Projek {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h3>
+    <h3>Laporan Material Persediaan Mati / ({{ucwords($material)}}) Stock Projek {{cat($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h3>
 @elseif($material == 'rongsokan')
-    <h3>Laporan Material {{ucwords($material)}} {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h3>
+    <h3>Laporan Material {{ucwords($material)}} {{cat($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h3>
 @else
-    <h3>Laporan Material Bukan Persediaan( Direct {{ucwords($material)}} ) {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h3>
+    <h3>Laporan Material Bukan Persediaan( Direct {{ucwords($material)}} ) {{cat($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h3>
 @endif
 
 {{-- <h2>Laporan {{ucwords($material)}} {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2> --}}

@@ -56,13 +56,15 @@
                                 <div class="form-group mt-2">
                                     <label >Departement</label>
                                     <select name="departement" class="form-select form-control" aria-label="Default select example" required>
-                                        <option value="reliability"selected>Dept.Reliability</option>
-                                        <option value="layum">Dept.Layanan Umum</option>
-                                        <option value="technology">Dept.IT</option>
-                                        <option value="sekper">Dept.Sekretaris Perusahaan</option>
-                                        <option value="procurement">Dept.Procurement</option>
-                                        <option value="hsse">Dept.HSSE</option>
-                                        <option value="migas">Dept. Distribusi Gas dan Manajemen ORF</option>
+                                        <option value="reliability"selected>Reliability</option>
+                                        <option value="layum">Layanan Umum</option>
+                                        <option value="technology">IT</option>
+                                        <option value="sekper">Sekretaris Perusahaan</option>
+                                        <option value="procurement">Procurement</option>
+                                        <option value="hsse">HSSE</option>
+                                        <option value="migas">Distribusi Gas dan Manajemen ORF</option>
+                                        <option value="transportasi">Transportasi LNG & Operasional FSRU</option>
+                                        <option value="bisnis">Perencanaan & Pengembangan Bisnis</option>
                                     </select>
                                 </div>
                                 <label class="mt-3">Tanda Tangan/Paraf (PNG)</label>

@@ -66,6 +66,7 @@ class FlowOutPendingApproval extends Controller
         $data->firstApprovalPartOut = 'Reject';
         $data->secondApprovalPartOut = 'Reject';
         $data->thirdApprovalPartOut = 'Reject';
+        $data->thirdApprovalDocsPartOut = 'Reject';
         $data->fourthApprovalPartOut = 'Reject';
         $data->timeFirstApprovalPartOut = $time;
         $data->timeSecondApprovalPartOut = $time;

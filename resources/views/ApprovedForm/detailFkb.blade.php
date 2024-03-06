@@ -178,8 +178,15 @@
                     href="/flowOut{{ucwords($data->kategoriPart)}}-edit/{{$data->id_flowOutPart}}">
                     Edit
                    </a>
+                        <form action="deleteFlowOut/{{$data->id_flowOutPart}}" method="post">
+                            @csrf
+                            <div class="mt-2">
+                                <button onclick="if (confirm('Yakin Mau Delete Data ? Tindakan ini tidak dapat dikembalikan')){return true;}else{event.stopPropagation(); event.preventDefault();};" class="btn btn-sm redDelete margin-button" type="submit"><i class="bi bi-trash3-fill"></i> Delete
+                                </button>
+                            </div>
+                        </form>
                     @endif
-                    <a type="button" class="btn btn-sm blueDetail margin-button"
+                    <a type="button" class="btn btn-sm blueDetail margin-button mt-2"
                     href="/flowOut{{ucwords($data->kategoriPart)}}-detail/{{$data->id_flowOutPart}}">
                         Detail
                     </a>

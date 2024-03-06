@@ -31,13 +31,36 @@
                 <td>{{$data->name}}</td>
                 <td>{{$data->email}}</td>
                 <td>{{$data->role}}</td>  
-                @if ($data->departement == 'migas')
-                    <td>Distribusi Gas ORF</td>
-                @else
-                    <td>{{$data->departement}}</td>
+                @if ($data->departement == 'reliability')
+                    <td>Reliability</td>
+                @elseif ($data->departement == 'layum')
+                    <td>Layanan Umum</td>
+                @elseif ($data->departement == 'technology')
+                    <td>IT</td>
+                @elseif ($data->departement == 'sekper')
+                    <td>Sekretaris Perusahaan</td>
+                @elseif ($data->departement == 'procurement')
+                    <td>Procurement</td>
+                @elseif ($data->departement == 'hsse')
+                    <td>HSSE</td>
+                @elseif ($data->departement == 'migas')
+                    <td>Distribusi Gas dan Manajemen ORF</td>
+                @elseif ($data->departement == 'transportasi')
+                    <td>Transportasi LNG & Operasional FSRU</td>
+                @elseif ($data->departement == 'bisnis')
+                    <td>Perencanaan & Pengembangan Bisnis</td>
                 @endif
                 <td>
                     <a type="button" class="btn btn-sm orangeEdit " 
+                        href="editEmail/{{$data->id}}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                            </svg>
+                            Edit Email
+                    </a>
+
+                    <a type="button" class="btn btn-sm orangeEdit mt-2" 
                         href="showAccount/{{$data->id}}">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>

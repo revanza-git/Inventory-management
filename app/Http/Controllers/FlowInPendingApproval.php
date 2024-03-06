@@ -66,8 +66,9 @@ class FlowInPendingApproval extends Controller
         $time = Carbon::now()->format('d, M Y [H:i:s]');
         $user = auth()->user()->name;
         $data->firstApprovalPartIn = 'Reject';
-        $data->secondApprovalPartIn= 'Reject';
+        $data->secondApprovalPartIn = 'Reject';
         $data->thirdApprovalPartIn = 'Reject';
+        $data->thirdApprovalDocsPartIn = 'Reject';
         $data->fourthApprovalPartIn = 'Reject';
         $data->timeFirstApprovalPartIn = $time;
         $data->timeSecondApprovalPartIn = $time;

@@ -38,6 +38,8 @@
                                                                         <option value="sekper">Titipan Sekretaris Perusahaan</option>
                                                                         <option value="hsse">HSSE</option>
                                                                         <option value="gasorf">Distribusi Gas dan Orf</option>
+                                                                        <option value="transportasi">Transportasi LNG & Operasional FSRU</option>
+                                                                        <option value="bisnis">Perencanaan & Pengembangan Bisnis</option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="mb-3">

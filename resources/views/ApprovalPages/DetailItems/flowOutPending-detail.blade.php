@@ -130,11 +130,11 @@
                     <td>Cek Validitas Dokumen</td>
                     <td>{{$data->nameFirstApprovalPartOut}}</td>
                     <td>
-                        @if (auth()->user()->role =='admin')
+                        @if (auth()->user()->role =='admin' && $data->firstApprovalPartOut =! 'Reject')
                             <a type="button" 
                             onclick="if (confirm('Yakin Reject Request ini?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
                             class="btn btn-sm redRej margin-button" 
-                            href="/rejectDokumenIn/{{$data->id_flowInPart}}">Reject</a>
+                            href="/rejectDokumenOut/{{$data->id_flowOutPart}}">Reject</a>
                         @endif 
                     </td>
                     
