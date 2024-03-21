@@ -6,6 +6,7 @@ use App\Models\FlowInPart;
 use App\Models\FlowOutPart;
 use App\Models\HistoryOut;
 use App\Models\Part;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -171,6 +172,30 @@ class FlowOutPartController extends Controller
         }
         $id = $attributePart->idPart;
         $categoryPart = $attributePart->kategoriPart;
+
+        $namaRequester = $request->nameRequester;
+        $departmentRequester = $request->departmentRequester;
+
+        $email = User::where('role', 'admin')
+                ->where('departement', 'procurement')
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Keluar Barang',
+            'body' => "$namaRequester dari Departemen $departmentRequester mengajukan dokumen Formulir Keluar Barang(FKB). Yuk segera di approve :)",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
 
         // REDIRECT
         return redirect()->to($categoryPart . '-detail/' . $id);

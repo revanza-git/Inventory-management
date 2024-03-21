@@ -10,6 +10,7 @@ use App\Models\FlowOutPart;
 use App\Models\HistoryOut;
 use Romans\Filter\IntToRoman;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class FlowOutPendingMaster extends Controller
 {
@@ -98,6 +99,33 @@ class FlowOutPendingMaster extends Controller
             $history->id_flowOutPart = $id;
             $history->save();
         }
+
+        $attributePart = FlowOutPart::findOrFail($id);
+
+        $namaRequester = $attributePart->nameRequester;
+        $departmentRequester = $attributePart->departmentRequester;
+
+        $email = User::where('role', 'head')
+                ->where('departement', $departmentRequester)
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Keluar Barang',
+            'body' => "$namaRequester dari Departemen $departmentRequester mengajukan dokumen Formulir Keluar Barang(FKB). Yuk segera di approve :)",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
+
         return redirect('/flowOutPendingMaster')->with('success', 'Berhasil Approve Satu Request');
     }
 

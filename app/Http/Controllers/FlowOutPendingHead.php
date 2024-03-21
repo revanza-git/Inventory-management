@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HistoryOut;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -233,6 +234,33 @@ class FlowOutPendingHead extends Controller
             $history->id_flowOutPart = $id;
             $history->save();
         }
+
+        $attributePart = FlowOutPart::findOrFail($id);
+
+        $namaRequester = $attributePart->nameRequester;
+        $departmentRequester = $attributePart->departmentRequester;
+
+        $email = User::where('role', 'admin')
+                ->where('departement', 'procurement')
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Keluar Barang',
+            'body' => "$namaRequester dari Departemen $departmentRequester mengajukan dokumen Formulir Keluar Barang(FKB). Yuk segera di approve :)",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
+
         return redirect('/flowOutPendingHead')->with('success', 'Berhasil Approve Satu Request');
     }
 
@@ -475,6 +503,32 @@ class FlowOutPendingHead extends Controller
             $history->id_flowOutPart = $id;
             $history->save();
         }
+
+        $attributePart = FlowOutPart::findOrFail($id);
+
+        $namaRequester = $attributePart->nameRequester;
+        $departmentRequester = $attributePart->departmentRequester;
+
+        $email = User::where('name', $namaRequester)
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Keluar Barang',
+            'body' => "Pengajuan Formulir Keluar Barang-mu sudah selesai di approve. Silakan cek web SINV untuk melihat detailnya",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
+
         return redirect('/flowOutFinalHead')->with('success', 'Berhasil Approve Satu Request');
     }
 }

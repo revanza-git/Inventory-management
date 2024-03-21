@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminOldStockController;
 use App\Models\FlowInPart;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PartController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FlowInPendingHead;
 use App\Http\Controllers\FlowOutPendingHead;
 use App\Http\Controllers\RegisterController;
@@ -16,7 +16,7 @@ use App\Http\Controllers\FlowInPendingApproval;
 use App\Http\Controllers\FlowOutPartController;
 use App\Http\Controllers\UserRequestController;
 use App\Http\Controllers\FlowOutPendingApproval;
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AdminOldStockController;
 
 Route::get('/', function () {
     // return view('welcome');
@@ -477,7 +477,7 @@ Route::middleware(['auth', 'cekrole:user,head,admin,master'])->group(function ()
     Route::get('/flowOutBisnis-edit/{id}', [FlowOutPartController::class, 'edit']);
     Route::put('/flowOutBisnis/{id}', [FlowOutPartController::class, 'update']);
     Route::get('/flowOutBisnis-detail/{id}', [FlowOutPartController::class, 'showDetail']);
-
+    
 });
 
 

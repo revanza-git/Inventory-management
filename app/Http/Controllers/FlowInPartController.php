@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\FlowInPart;
 use App\Models\HistoryIn;
 use App\Models\Part;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon; 
@@ -127,6 +128,29 @@ class FlowInPartController extends Controller
         // $history->reason = 'Pengajuan Barang';
         // $history->name = 'Belum Ada PIC';
 
+        $namaRequester = $request->nameRequester;
+        $departmentRequester = $request->departmentRequester;
+
+        $email = User::where('role', 'admin')
+                ->where('departement', 'procurement')
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+        
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Terima Barang',
+            'body' => "$namaRequester dari Departemen $departmentRequester telah mengajukan dokumen Formulir Terima Barang(FTB). Yuk segera di approve :)",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
 
         // REDIRECT
         return redirect()->to($categoryPart.'-detail/' . $id);

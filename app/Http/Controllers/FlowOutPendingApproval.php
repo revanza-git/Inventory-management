@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\FlowOutPart;
 use App\Models\HistoryOut;
+use App\Models\User;
 use Carbon\Carbon;
 use App\Models\Part;
 use Illuminate\Support\Facades\DB;
@@ -253,6 +254,33 @@ class FlowOutPendingApproval extends Controller
             $history->id_flowOutPart = $id;
             $history->save();
         }
+
+        $attributePart = FlowOutPart::findOrFail($id);
+
+        $namaRequester = $attributePart->nameRequester;
+        $departmentRequester = $attributePart->departmentRequester;
+
+        $email = User::where('role', 'head')
+                ->where('departement', $departmentRequester)
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Keluar Barang',
+            'body' => "$namaRequester dari Departemen $departmentRequester mengajukan dokumen Formulir Keluar Barang(FKB). Yuk segera di approve :)",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
+
         return redirect('/flowOutPendingApprovalDate')->with('success', 'Berhasil Approve Satu Request');
     }
 
@@ -392,6 +420,33 @@ class FlowOutPendingApproval extends Controller
                 $history->save();
             }
         }
+
+        $attributePart = FlowOutPart::findOrFail($id);
+
+        $namaRequester = $attributePart->nameRequester;
+        $departmentRequester = $attributePart->departmentRequester;
+
+        $email = User::where('role', 'master')
+                ->where('departement', 'procurement')
+                ->pluck('email')
+                ->toArray();
+        $emailString = implode(', ', $email);
+
+        $mail = config('mail.from.address');
+
+        $mail_data = [
+            'fromEmail' => $mail,
+            'fromName' => 'Sunter & ORF Warehouse (SINV)',
+            'recipient' => $emailString,
+            'subject' => 'Pengajuan Formulir Keluar Barang',
+            'body' => "$namaRequester dari Departemen $departmentRequester mengajukan dokumen Formulir Keluar Barang(FKB). Yuk segera di approve :)",
+        ];
+        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+            $message->to($mail_data['recipient'])
+                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
+                    ->subject($mail_data['subject']);
+        });
+
         return redirect('/flowOutPendingApprovalFisik')->with('success', 'Berhasil Approved Satu Request');
     }
 }

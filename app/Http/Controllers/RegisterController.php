@@ -28,7 +28,7 @@ class RegisterController extends Controller
         $signatureFileName = NULL;
         $validatedData = $request->validate([
             'name' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => ['required', Password::min(6)],
             'role' => 'required',
             'departement' => 'required',
