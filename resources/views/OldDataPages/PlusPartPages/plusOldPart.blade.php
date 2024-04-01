@@ -27,6 +27,7 @@
                                         <option value="layum">Dept.Layanan Umum</option>
                                         <option value="technology">Dept.IT</option>
                                         <option value="sekper">Dept.Sekretaris Perusahaan</option>
+                                        <option value="transportasi">Dept.Transportasi LNG & FSRU</option>
                                     </select>
             </div>
             <div class="form-floating mb-3">
