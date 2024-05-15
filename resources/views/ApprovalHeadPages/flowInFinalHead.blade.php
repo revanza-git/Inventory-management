@@ -27,7 +27,7 @@
                             ({{$data->departmentRequester}})
                     </td>
                     <td>
-                        <form action="/detailflowInFinalHead" method="post">
+                        <form action="/inventory/detailflowInFinalHead" method="post">
                             @csrf
                             <input type="hidden" name="noFtb" value="{{$data->noFtb}}" >
                             <input type="hidden" name="name" value="{{$data->nameRequester}}" >

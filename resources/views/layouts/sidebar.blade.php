@@ -53,22 +53,22 @@
             <ul class="list-unstyled components">
                 <p>Sunter & ORF Warehouse</p>
                 <li>
-                    <a href="/home">Home</a>
+                    <a href="{{ url('/home') }}">Home</a>
                 </li>
                 @if (auth()->user()->role =='master')
                     <li class="active">
                         <a href="#pendingApproval" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pending Approval</a>
                         <ul class="collapse list-unstyled" id="pendingApproval">
                             <li>
-                                <a href="/flowInPendingMaster">In</a>
+                                <a href="{{ url('/flowInPendingMaster') }}">In</a>
                             </li>
                             <li>
-                               <a href="/flowOutPendingMaster">Out</a>
+                               <a href="{{ url('/flowOutPendingMaster') }}">Out</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                     <a href="/report">Laporan</a>
+                     <a href="{{ url('/report') }}">Laporan</a>
                     </li>
                 @endif
                 @if (auth()->user()->role =='head')
@@ -76,10 +76,10 @@
                             <a href="#pendingApproval" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pending Approval <br>Docs</a>
                             <ul class="collapse list-unstyled" id="pendingApproval">
                                 <li>
-                                    <a href="/flowInPendingHead">In</a>
+                                    <a href="{{ url('/flowInPendingHead') }}">In</a>
                                 </li>
                                 <li>
-                                <a href="/flowOutPendingHead">Out</a>
+                                <a href="{{ url('/flowOutPendingHead') }}">Out</a>
                                 </li>
                             </ul>
                      </li>
@@ -87,26 +87,26 @@
                             <a href="#finalApprovalHead" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pending Final <br>Approval</a>
                             <ul class="collapse list-unstyled" id="finalApprovalHead">
                                 <li>
-                                    <a href="/flowInFinalHead">In</a>
+                                    <a href="{{ url('/flowInFinalHead') }}">In</a>
                                 </li>
                                 <li>
-                                    <a href="/flowOutFinalHead">Out</a>
+                                    <a href="{{ url('/flowOutFinalHead ') }}">Out</a>
                                 </li>
                             </ul>
                      </li>
                 @endif
                 @if (auth()->user()->role =='admin')
                     <li>
-                        <a href="/addPart">Tambah Data Part Lampau</a>
+                        <a href="{{ url('/addPart') }}">Tambah Data Part Lampau</a>
                     </li>
                     {{-- <li class="active">
                         <a href="#pendingPart" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pending Part</a>
                         <ul class="collapse list-unstyled" id="pendingPart">
                             <li>
-                                <a href="/flowInPendingApproval">Part In</a>
+                                <a href="{{ url('/flowInPendingApproval ') }}">Part In</a>
                             </li>
                             <li>
-                                <a href="/flowOutPendingApproval">Part Out</a>
+                                <a href="{{ url('/flowOutPendingApproval') }}">Part Out</a>
                             </li>
                         </ul>
                     </li> --}}
@@ -114,10 +114,10 @@
                         <a href="#pendingApproval" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pending Approval </br>Docs</a>
                         <ul class="collapse list-unstyled" id="pendingApproval">
                             <li>
-                                <a href="/flowInPendingApprovalDate">In</a>
+                                <a href="{{ url('/flowInPendingApprovalDate') }}">In</a>
                             </li>
                             <li>
-                                <a href="/flowOutPendingApprovalDate">Out</a>
+                                <a href="{{ url('/flowOutPendingApprovalDate') }}">Out</a>
                             </li>
                         </ul>
                     </li>
@@ -125,31 +125,31 @@
                         <a href="#pendingApprovalFisik" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pending Approval </br>Fisik</a>
                         <ul class="collapse list-unstyled" id="pendingApprovalFisik">
                             <li>
-                                <a href="/flowInPendingApprovalFisik">In</a>
+                                <a href="{{ url('/flowInPendingApprovalFisik ') }}">In</a>
                             </li>
                             <li>
-                                <a href="/flowOutPendingApprovalFisik">Out</a>
+                                <a href="{{ url('/flowOutPendingApprovalFisik  ') }}">Out</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                     <a href="/report">Laporan </a>
+                     <a href="{{ url('/report ') }}">Laporan </a>
                     </li>
                 @endif
                 @if (auth()->user()->role =='user')
                     <li>
-                        <a href="/addPart">Tambah Data Part</a>
+                        <a href="{{ url('/addPart') }}">Tambah Data Part</a>
                     </li>
                     <li>
-                        <a href="/myRequest">My Pending Request</a>
+                        <a href="{{ url('/myRequest') }}">My Pending Request</a>
                     </li>
                 @endif
                 {{-- OPEN --}}
                 <li class="active">
                     <a href="#approveForm" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Approved Form</a>
                     <ul class="collapse list-unstyled" id="approveForm">
-                        <li><a href="/ftb">FTB</a></li>
-                        <li><a href="/fkb">FKB</a></li>
+                        <li><a href="{{ url('/ftb') }}">FTB</a></li>
+                        <li><a href="{{ url('/fkb') }}">FKB</a></li>
                     </ul>
                 </li>
                 
@@ -159,56 +159,56 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Data Barang</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="/electrical">Electrical</a>
+                            <a href="/inventory/electrical">Electrical</a>
                         </li>
                         <li>
-                            <a href="/instrument">Instrument</a>
+                            <a href="/inventory/instrument">Instrument</a>
                         </li>
                         <li>
-                            <a href="/mechanical">Mechanical</a>
+                            <a href="/inventory/mechanical">Mechanical</a>
                         </li>
                         <li>
-                            <a href="/provision">Provision Tie In</a>
+                            <a href="/inventory/provision">Provision Tie In</a>
                         </li>
                         <li>
-                            <a href="/emergency">Emergency</a>
+                            <a href="/inventory/emergency">Emergency</a>
                         </li>
                         <li>
-                            <a href="/reliability">Titipan Reliability</a>
+                            <a href="/inventory/reliability">Titipan Reliability</a>
                         </li>
                         <li>
-                            <a href="/scrap">Scrap R & Q</a>
+                            <a href="/inventory/scrap">Scrap R & Q</a>
                         </li>
                         <li>
-                            <a href="/technology">Titipan IT</a>
+                            <a href="/inventory/technology">Titipan IT</a>
                         </li>
                         <li>
-                            <a href="/tiyum">Titipan Layum</a>
+                            <a href="/inventory/tiyum">Titipan Layum</a>
                         </li>
                         <li>
-                            <a href="/scrayum">Scrap Layum</a>
+                            <a href="/inventory/scrayum">Scrap Layum</a>
                         </li>
                         <li>
-                            <a href="/sekper">Titipan Sekper</a>
+                            <a href="/inventory/sekper">Titipan Sekper</a>
                         </li>
                         <li>
                             <a href="/hsse">Titipan HSSE</a>
                         </li>
                         <li>
-                            <a href="/gasorf">Titipan Distibusi Gas dan Manajemen Orf</a>
+                            <a href="/inventory/gasorf">Titipan Distibusi Gas dan Manajemen Orf</a>
                         </li>
                         <li>
-                            <a href="/transportasi">Transportasi LNG & Operasional FSRU</a>
+                            <a href="/inventory/transportasi">Transportasi LNG & Operasional FSRU</a>
                         </li>
                         <li>
-                            <a href="/bisnis">Perencanaan & Pengembangan Bisnis</a>
+                            <a href="/inventory/bisnis">Perencanaan & Pengembangan Bisnis</a>
                         </li>
                     </ul>
                 </li>
                 
 
                 <li>
-                    <form action="/logout" method="post" style="margin: 5px">
+                    <form action="/inventory/logout" method="post" style="margin: 5px">
                         @csrf
                         <button type="submit" style="background: #293462; color:white; border:none;">Logout</button>
                     </form>

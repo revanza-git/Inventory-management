@@ -21,7 +21,7 @@
                             ({{$data->departmentRequester}})
                     </td>
                     <td>
-                        <form action="/detailFkb" method="post">
+                        <form action="{{ url('/detailFkb') }}" method="post">
                             @csrf
                             <input type="hidden" name="noFkb" value="{{$data->noFkb}}" >
                             <input type="hidden" name="name" value="{{$data->nameRequester}}" >

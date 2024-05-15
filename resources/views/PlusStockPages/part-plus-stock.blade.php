@@ -24,7 +24,7 @@
 
 <div class="mt-4 col-8 ">
 
-    <form action="/{{$category}}-plus-stock/{{$dataId}}" enctype="multipart/form-data" method="POST">
+    <form action="/inventory/{{$category}}-plus-stock/{{$dataId}}" enctype="multipart/form-data" method="POST">
         @csrf
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"  name="noFtb" readonly>

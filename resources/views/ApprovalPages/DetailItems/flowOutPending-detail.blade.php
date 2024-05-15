@@ -134,7 +134,7 @@
                             <a type="button" 
                             onclick="if (confirm('Yakin Reject Request ini?')){return true;}else{event.stopPropagation(); event.preventDefault();};"
                             class="btn btn-sm redRej margin-button" 
-                            href="/rejectDokumenOut/{{$data->id_flowOutPart}}">Reject</a>
+                            href="/inventory/rejectDokumenOut/{{$data->id_flowOutPart}}">Reject</a>
                         @endif 
                     </td>
                     

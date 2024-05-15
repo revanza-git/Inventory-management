@@ -63,11 +63,11 @@
                 <td>
                     @if(auth()->user()->role =='admin')
                         <a type="button" class="btn btn-sm greenAcc customMarginButton" 
-                        href="/plusOldStock/{{$data->idPart}}">
+                        href="/inventory/plusOldStock/{{$data->idPart}}">
                             <i class="bi bi-plus-circle"></i> Stok Lama
                         </a>
                         <a type="button" class="btn btn-sm redRej customMarginButton" 
-                        href="/minusOldStock/{{$data->idPart}}">
+                        href="/inventory/minusOldStock/{{$data->idPart}}">
                            <i class="bi bi-dash-circle"></i> Stok Lama
                         </a>
                         <a type="button" class="btn btn-sm orangeEdit customMarginButton" 

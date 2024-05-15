@@ -23,7 +23,7 @@
 
 <div class="mt-4 col-8 ">
 
-    <form action="/{{$category}}-minus-stock/{{$dataId}}" enctype="multipart/form-data" method="POST">
+    <form action="/inventory/{{$category}}-minus-stock/{{$dataId}}" enctype="multipart/form-data" method="POST">
         @csrf
 
             <div class="form-floating mb-3">

@@ -99,7 +99,7 @@ array_push($arrayOfId,$data->id_flowInPart);
 @endphp
 <div class="mt-3 mb-3  justify-content-center">
 
-    <form action="/approveAllInMaster" method="post">
+    <form action="/inventory/approveAllInMaster" method="post">
         @csrf 
         @foreach($arrayOfId as $id)
         <input type="hidden" name="arrayOfId[]" value="{{$id}}">
@@ -112,7 +112,7 @@ array_push($arrayOfId,$data->id_flowInPart);
         </div>
     </form>
 
-    <form action="/revisionAllInMaster" method="post">
+    <form action="/inventory/revisionAllInMaster" method="post">
         @csrf 
         @foreach($arrayOfId as $id)
         <input type="hidden" name="arrayOfId[]" value="{{$id}}">

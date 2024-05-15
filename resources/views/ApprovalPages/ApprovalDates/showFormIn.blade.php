@@ -54,10 +54,10 @@
                 <td>
                     @if($data->thirdApprovalDocsPartIn=='Approved')
                         <a type="button" class="btn btn-sm orangeEdit margin-button" 
-                        href="/reasonsSecondApprovalIn/{{$data->id_flowInPart}}">Fisik</a>
+                        href="/inventory/reasonsSecondApprovalIn/{{$data->id_flowInPart}}">Fisik</a>
                     @else 
                        <a type="button" class="btn btn-sm orangeEdit margin-button" 
-                         href="/reasonsFirstApprovalIn/{{$data->id_flowInPart}}">Docs</a>
+                         href="/inventory/reasonsFirstApprovalIn/{{$data->id_flowInPart}}">Docs</a>
                     @endif
                 </td>
                 <td>
@@ -106,7 +106,7 @@
     {{-- {{dd($arrayOfId);}} --}}
     {{--TODO: REASON --}}          
         @if($list[0]->thirdApprovalDocsPartIn == 'Approved')
-            <form action="/approveFisikAllIn" method="post">
+            <form action="/inventory/approveFisikAllIn" method="post">
                 @csrf
                 @foreach($arrayOfId as $id)
                     <input type="hidden" name="arrayOfId[]" value="{{$id}}" >
@@ -116,7 +116,7 @@
                 </div>
             </form>
         @else
-            <form action="/approveAllIn" method="post">
+            <form action="/inventory/approveAllIn" method="post">
                 @csrf
                 @foreach($arrayOfId as $id)
                     <input type="hidden" name="arrayOfId[]" value="{{$id}}" >

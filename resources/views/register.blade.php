@@ -11,7 +11,7 @@
     </div>
 @endif
 
-                <form action="/register"  enctype="multipart/form-data" method="POST">
+                <form action="/inventory/register"  enctype="multipart/form-data" method="POST">
                             @csrf
                             <div class="mt-2">
                                 <div class="form-group">

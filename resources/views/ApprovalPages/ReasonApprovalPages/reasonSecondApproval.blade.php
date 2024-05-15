@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 @section('content')
 
-<form action="/{{$action}}/{{$id}}" enctype="multipart/form-data" method="POST">
+<form action="/inventory/{{$action}}/{{$id}}" enctype="multipart/form-data" method="POST">
         @csrf
     <div class="form-floating mb-3">
         <h3>Halaman Revisi Fisik</h3>

@@ -6,7 +6,7 @@
 
 <div class="mt-4 col-8 ">
     {{-- {{dd($data)}} --}}
-    <form action="/flowIn{{$category}}/{{$data->id_flowInPart}}" enctype="multipart/form-data" method="POST">
+    <form action="/inventory/flowIn{{$category}}/{{$data->id_flowInPart}}" enctype="multipart/form-data" method="POST">
         @method('PUT')
         @csrf
         @if ($errors->any())

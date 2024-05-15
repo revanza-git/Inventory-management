@@ -6,7 +6,7 @@
 
 <div class="mt-4 col-8 ">
 
-    <form action="/{{$category}}/{{$data->idPart}}" method="POST">
+    <form action="/inventory/{{$category}}/{{$data->idPart}}" method="POST">
         @method('PUT') @csrf
         <div class="form-floating mb-3">
             <input

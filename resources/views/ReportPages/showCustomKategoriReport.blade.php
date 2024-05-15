@@ -57,7 +57,7 @@
     <h3>Laporan Material Bukan Persediaan( Direct {{ucwords($material)}} ) {{cat($kategori)}} Periode {{Carbon\Carbon::parse($firstRange)->isoFormat('LL');}} - {{Carbon\Carbon::parse($secondRange)->isoFormat('LL');}}</h3>
 @endif
 
-<form action="/exportCustomCategory-report" method="post">
+<form action="/inventory/exportCustomCategory-report" method="post">
     @csrf
     <input type="hidden" name="kategori" value="{{$kategori}}">
     <input type="hidden" name="firstRange" value="{{$firstRange}}">

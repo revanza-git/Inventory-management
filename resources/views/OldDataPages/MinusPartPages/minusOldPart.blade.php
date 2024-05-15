@@ -5,7 +5,7 @@
 
 <div class="mt-4 col-8 ">
 
-    <form action="/minusOldStock/{{$dataId}}" enctype="multipart/form-data" method="POST">
+    <form action="/inventory/minusOldStock/{{$dataId}}" enctype="multipart/form-data" method="POST">
         @csrf
             <div class="form-floating mb-3">
                 <input type="date" class="form-control" id="floatingInput" name="dtStockPartApprovedOut" required value="{{old('dtStockPartApprovedOut')}}">

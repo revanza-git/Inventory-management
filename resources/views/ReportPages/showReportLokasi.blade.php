@@ -47,7 +47,7 @@
 
 <h2>Laporan {{cat($kategori)}} {{ucwords($lokasiPart)}} Triwulan {{$triwulan}} ({{$year}})</h2>
 
-<form action="/exportLokasi-report" method="post">
+<form action="/inventory/exportLokasi-report" method="post">
     @csrf
     <input type="hidden" name="triwulan" value="{{$triwulan}}">
     <input type="hidden" name="year" value="{{$year}}">

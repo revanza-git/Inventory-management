@@ -193,7 +193,7 @@
                 <td>{{$data->needsStockPartIn}}</td>
                 <td>
                     <a type="button" class="btn btn-sm blueDetail margin-button"
-                    href="/flowIn{{ucwords($data->kategoriPart)}}-detail/{{$data->id_flowInPart}}">
+                    href="{{ url('/flowIn' . ucwords($data->kategoriPart) . '-detail/' . $data->id_flowInPart) }}">
                         Detail
                     </a>
                 </td>
@@ -214,7 +214,7 @@ array_push($arrayOfId,$data->id_flowInPart);
 } // json_encode($arrayOfId);
 @endphp
     @if (auth()->user()->role == 'head')
-    <form action="/approveFlowInFinalHead" method="post">
+    <form action="{{ url('/approveFlowInFinalHead') }}" method="post">
             @csrf 
             @foreach($arrayOfId as $id)
             <input type="hidden" name="arrayOfId[]" value="{{$id}}">
@@ -229,7 +229,7 @@ array_push($arrayOfId,$data->id_flowInPart);
     </form>
     @endif
     @if (auth()->user()->role == 'master')
-    <form action="/approveFlowInFinalMaster" method="post">
+    <form action="{{ url('/approveFlowInFinalMaster') }}" method="post">
             @csrf 
             @foreach($arrayOfId as $id)
             <input type="hidden" name="arrayOfId[]" value="{{$id}}">

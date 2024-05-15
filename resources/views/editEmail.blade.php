@@ -10,7 +10,7 @@
         <div>{{session('success')}}</div>
     </div>
 @endif
-<form action="/resetPassword/{{$data->id}}" method="POST">
+<form action="/inventory/resetPassword/{{$data->id}}" method="POST">
      @csrf
      <div class="col-5">
         <div class="form-group mt-4">

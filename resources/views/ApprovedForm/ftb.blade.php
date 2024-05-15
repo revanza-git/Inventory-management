@@ -22,7 +22,7 @@
                             ({{$data->departmentRequester}}) 
                     </td>
                     <td>
-                        <form action="/detailFtb" method="post">
+                        <form action="{{ url('/detailFtb') }}" method="post">
                             @csrf
                             <input type="hidden" name="noFtb" value="{{$data->noFtb}}" >
                             <input type="hidden" name="name" value="{{$data->nameRequester}}" >

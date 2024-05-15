@@ -60,7 +60,7 @@
 
 {{-- <h2>Laporan {{ucwords($material)}} {{ucwords($kategori)}} Triwulan {{$triwulan}} ({{$year}})</h2> --}}
 
-<form action="/exportCategory-report" method="post">
+<form action="/inventory/exportCategory-report" method="post">
     @csrf
     <input type="hidden" name="triwulan" value="{{$triwulan}}">
     <input type="hidden" name="year" value="{{$year}}">

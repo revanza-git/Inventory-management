@@ -71,7 +71,7 @@
 
         {{-- TRACE DATA PER BULAN --}}
         <div class="mt-2 col-3 ">
-        <form action="/{{$records->kategoriPart}}-trace/{{$records->idPart}}" method="POST">
+        <form action="/inventory/{{$records->kategoriPart}}-trace/{{$records->idPart}}" method="POST">
         @csrf
         <label >Trace Data :</label>
         <div class="form-floating mb-3">
@@ -156,7 +156,7 @@
                             @endif
                             <td>   
                                 <a type="button" class="btn btn-sm blueDetail margin-button"
-                                href="/flowIn{{ucwords($category)}}-detail/{{$data->id_flowInPart}}">
+                                href="/inventory/flowIn{{ucwords($category)}}-detail/{{$data->id_flowInPart}}">
                                 Detail
                                 </a>
                             </td>
@@ -232,7 +232,7 @@
                             @endif
                             <td>   
                                 <a type="button" class="btn btn-sm blueDetail margin-button"
-                                href="/flowOut{{ucwords($category)}}-detail/{{$data->id_flowOutPart}}">
+                                href="/inventory/flowOut{{ucwords($category)}}-detail/{{$data->id_flowOutPart}}">
                                 Detail
                                 </a>
                             </td>

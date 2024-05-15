@@ -55,12 +55,12 @@
                    
                    @else
                    <a type="button" class="btn btn-sm orangeEdit margin-button" 
-                    href="/flowOut{{ucwords($data->kategoriPart)}}-edit/{{$data->id_flowOutPart}}">
+                    href="/inventory/flowOut{{ucwords($data->kategoriPart)}}-edit/{{$data->id_flowOutPart}}">
                     Edit
                    </a>
                    @endif 
                    <a type="button" class="btn btn-sm blueDetail margin-button"
-                    href="/flowOut{{ucwords($data->kategoriPart)}}-detail/{{$data->id_flowOutPart}}">
+                    href="/inventory/flowOut{{ucwords($data->kategoriPart)}}-detail/{{$data->id_flowOutPart}}">
                     Detail
                     </a>
                 </td>

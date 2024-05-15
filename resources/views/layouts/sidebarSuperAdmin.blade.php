@@ -51,16 +51,16 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Account</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="/register">Register</a>
+                            <a href="/inventory/register">Register</a>
                         </li>
                         <li>
-                            <a href="/resetPassword">Reset Password</a>
+                            <a href="/inventory/resetPassword">Reset Password</a>
                         </li>
                     </ul>
                 </li>
                 
                 <li>
-                    <form action="/logout" method="post" style="margin: 5px">
+                    <form action="/inventory/logout" method="post" style="margin: 5px">
                         @csrf
                         <button type="submit" style="background: #293462; color:white; border:none;">Logout</button>
                     </form>

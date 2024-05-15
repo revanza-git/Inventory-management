@@ -66,7 +66,7 @@
                 <td>{{$data->needsStockPartIn}}</td>
                 <td>
                     <a
-                        href='/flowInPending-detail/{{$data->id_flowInPart}}'
+                        href='{{ url("/flowInPending-detail/{$data->id_flowInPart}") }}'
                         type="button"
                         class="btn btn-sm blueDetail margin-button">
                         <svg
@@ -107,7 +107,7 @@ array_push($arrayOfId,$data->id_flowInPart);
 @endphp
 <div class="mt-3 mb-3  justify-content-center">
 
-    <form action="/approveAllInHead" method="post">
+    <form action="{{ url('/approveAllInHead') }}" method="post">
         @csrf 
         @foreach($arrayOfId as $id)
         <input type="hidden" name="arrayOfId[]" value="{{$id}}">
@@ -119,8 +119,8 @@ array_push($arrayOfId,$data->id_flowInPart);
                 type="submit">Approve Dokumen</button>
         </div>
     </form>
-
-    <form action="/revisionAllInHead" method="post">
+    
+    <form action="{{ url('/revisionAllInHead') }}" method="post">
         @csrf 
         @foreach($arrayOfId as $id)
         <input type="hidden" name="arrayOfId[]" value="{{$id}}">

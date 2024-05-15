@@ -48,7 +48,7 @@
     }
 </style>
 
-<form action="/export-report" method="post">
+<form action="/inventory/export-report" method="post">
     @csrf
     <input type="hidden" name="triwulan" value="{{$triwulan}}">
     <input type="hidden" name="year" value="{{$year}}">

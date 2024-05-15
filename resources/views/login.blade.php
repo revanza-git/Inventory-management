@@ -58,7 +58,7 @@
                                 </div>
                         @endif
                     </div>
-                    <form action="/login" method="POST">
+                    <form action="{{ url('/login') }}" method="POST">
                     @csrf
                     <div class="mb-10">
                             <div class="form-group">

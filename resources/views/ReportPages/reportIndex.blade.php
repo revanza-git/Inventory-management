@@ -20,7 +20,7 @@
                                                 <div id="faq1" class="collapse show" aria-labelledby="faqhead1" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showReport" method="POST">
+                                                            <form action="/inventory/showReport" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>
@@ -77,7 +77,7 @@
                                                 <div id="faq2" class="collapse" aria-labelledby="faqhead2" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showReportKategoriMaterial" method="POST">
+                                                            <form action="/inventory/showReportKategoriMaterial" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>
@@ -140,7 +140,7 @@
                                                 <div id="faq3" class="collapse" aria-labelledby="faqhead3" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showReportLokasi" method="POST">
+                                                            <form action="/inventory/showReportLokasi" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>
@@ -200,7 +200,7 @@
                                                 <div id="faq4" class="collapse" aria-labelledby="faqhead4" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showReportAll" method="POST">
+                                                            <form action="/inventory/showReportAll" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>
@@ -292,7 +292,7 @@
                                                 <div id="faq5" class="collapse show" aria-labelledby="faqhead5" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                        <form action="/showCustomReport" method="POST">
+                                                        <form action="/inventory/showCustomReport" method="POST">
                                                             @csrf
                                                             <div class="mb-3">
                                                                 <label>Pilih Jenis:</label>
@@ -337,7 +337,7 @@
                                                 <div id="faq6" class="collapse" aria-labelledby="faqhead6" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showCustomReportKategoriMaterial" method="POST">
+                                                            <form action="/inventory/showCustomReportKategoriMaterial" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>
@@ -391,7 +391,7 @@
                                                 <div id="faq7" class="collapse" aria-labelledby="faqhead7" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showCustomReportLokasi" method="POST">
+                                                            <form action="/inventory/showCustomReportLokasi" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>
@@ -442,7 +442,7 @@
                                                 <div id="faq8" class="collapse" aria-labelledby="faqhead8" data-parent="#faq">
                                                     <div class="card-body">
                                                         <div class="mt-3 col-11">
-                                                            <form action="/showCustomReportAll" method="POST">
+                                                            <form action="/inventory/showCustomReportAll" method="POST">
                                                                 @csrf
                                                                 <div class="mb-3">
                                                                     <label>Pilih Jenis:</label>

@@ -60,7 +60,7 @@
     <h3>Laporan Material Bukan Persediaan( Direct {{ucwords($material)}} ) {{cat($kategori)}} Triwulan {{$triwulan}} {{ucwords($lokasiPart)}} ({{$year}})</h3>
 @endif
 
-<form action="/exportAll-report" method="post">
+<form action="/inventory/exportAll-report" method="post">
     @csrf
     <input type="hidden" name="triwulan" value="{{$triwulan}}">
     <input type="hidden" name="year" value="{{$year}}">

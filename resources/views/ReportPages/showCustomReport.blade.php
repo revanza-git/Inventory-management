@@ -47,7 +47,7 @@
 
 <h3>Laporan {{cat($kategori)}} Periode {{Carbon\Carbon::parse($firstRange)->isoFormat('LL');}} - {{Carbon\Carbon::parse($secondRange)->isoFormat('LL');}}</h3>
 
-<form action="/exportCustom-report" method="post">
+<form action="/inventory/exportCustom-report" method="post">
     @csrf
     <input type="hidden" name="kategori" value="{{$kategori}}">
     <input type="hidden" name="firstRange" value="{{$firstRange}}">

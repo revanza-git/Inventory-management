@@ -61,7 +61,7 @@
 
 
 
-<form action="/exportCustomAll-report" method="post">
+<form action="/inventory/exportCustomAll-report" method="post">
     @csrf
     <input type="hidden" name="kategori" value="{{$kategori}}">
     <input type="hidden" name="firstRange" value="{{$firstRange}}">
