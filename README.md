@@ -6,15 +6,17 @@
 
 ## Table of Contents
 1. [Requirements](#requirements)
-2. [Installation](#installation)
-3. [Configuration](#configuration)
-4. [Database Setup](#database-setup)
-5. [Seeding Initial Data](#seeding-initial-data)
-6. [Storage Link](#storage-link)
-7. [Running the Application](#running-the-application)
-8. [Default Accounts](#default-accounts)
-9. [Troubleshooting](#troubleshooting)
-10. [About & Contact](#about--contact)
+2. [Features](#features)
+3. [UI Preview](#ui-preview)
+4. [Installation](#installation)
+5. [Configuration](#configuration)
+6. [Database Setup](#database-setup)
+7. [Seeding Initial Data](#seeding-initial-data)
+8. [Storage Link](#storage-link)
+9. [Running the Application](#running-the-application)
+10. [Default Accounts](#default-accounts)
+11. [Troubleshooting](#troubleshooting)
+12. [About & Contact](#about--contact)
 
 ---
 
@@ -24,6 +26,82 @@
 - **Node.js & npm**: Used for compiling and managing frontend assets (CSS, JS) for the user interface.
 - **SQL Server**: Stores all inventory, user, and transaction data securely.
 - **Git** (optional): For version control and code management.
+
+---
+
+## Features
+
+### Inventory Management
+- **Multi-Category Inventory Tracking**
+  - Electrical parts and equipment
+  - Instrumentation components
+  - Mechanical parts
+  - Provision/Tie-in materials
+  - Emergency supplies
+  - Reliability equipment
+  - Scrap materials
+  - IT equipment
+  - Department-specific inventories (Layum, Sekper, HSSE)
+
+### Stock Control
+- **Stock In/Out Management**
+  - Add new stock with detailed information
+  - Remove stock with tracking
+  - Historical stock tracking
+  - Stock level monitoring
+  - Old stock management
+
+### Document Management
+- **File Attachments**
+  - Support for photos (JPG, PNG)
+  - PDF document storage (PO, BAST)
+  - Digital signature storage
+  - Document version control
+
+### User Management
+- **Role-Based Access Control**
+  - Admin privileges
+  - Department-specific access
+  - User authentication
+  - Secure login system
+
+### Approval System
+- **Multi-level Approval Process**
+  - First approval
+  - Second approval
+  - Third approval
+  - Fourth approval
+  - Digital signature integration
+
+### Reporting & Analytics
+- **Transaction Tracking**
+  - Stock movement history
+  - Department-wise reports
+  - Date-range based filtering
+  - Transaction counts and summaries
+
+### Additional Features
+- **Search & Filter**
+  - Part number search
+  - Category-based filtering
+  - Location tracking
+  - Material categorization
+
+- **Data Validation**
+  - Input validation
+  - Data integrity checks
+  - Error handling
+  - Duplicate prevention
+
+---
+
+## UI Preview
+
+### Main Dashboard
+![System Inventory Dashboard](sinv0.jpg)
+
+### Inventory Management Interface
+![Inventory Management](sinv1.jpg)
 
 ---
 

@@ -37,7 +37,7 @@
         <div class="align-items-start d-lg-flex flex-column offset-lg-2 text-white">
          
                 <h1 class="fw-bold mb-2 text-uppercase"><span id="typed"></span></h1>
-                <p>a joint venture company between PERTAMINA & PGN</p>
+                <p>award winning inventory management system</p>
             </div>
         </div>
         <div
