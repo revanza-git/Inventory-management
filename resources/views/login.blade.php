@@ -83,7 +83,7 @@
                     </form>
                     <div style="margin-top: 50px;">
                         <a href="https://nusantararegas.com" target="_blank">
-                            © 2023 Copyright : Nusantara Regas
+                            © 2023 Copyright : Revanza Raytama
                         </a>
                     </div>
                 </div>
@@ -100,7 +100,7 @@
 
     <script>
         var typed = new Typed('#typed', {
-            strings: ['Login', 'Inventory System', 'Nusantara Regas'],
+            strings: ['Login', 'Inventory System', 'Inventory Management System'],
             loop: true,
             typeSpeed: 100,
         });

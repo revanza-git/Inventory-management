@@ -1,4 +1,4 @@
-# Sistem Inventory Nusantara Regas (NRIS)
+# System Inventory
 
 © 2024 Copyright : Revanza
 
@@ -132,7 +132,7 @@ _After logging in as superadmin, you can create accounts for other departments/u
 ---
 
 ## About & Contact
-This project is a Laravel-based inventory management system for Nusantara Regas, customized and maintained by Revanza.
+This project is a Laravel-based inventory management system, customized and maintained by Revanza.
 
 **Contact:**
 - Email: revanza.raytama@gmail.com
