@@ -95,6 +95,40 @@
 
 ---
 
+## Security Features
+
+### Authentication & Authorization
+- **Secure Login System**
+  - Rate limiting for login attempts
+  - Password hashing using bcrypt
+  - Session management
+  - Role-based access control
+
+### Data Protection
+- **Sensitive Data Handling**
+  - Encrypted database connections
+  - Secure file storage
+  - Input sanitization
+  - XSS protection
+
+### Security Best Practices
+- **System Security**
+  - Regular security updates
+  - Secure password policies
+  - Session timeout
+  - CSRF protection
+  - SQL injection prevention
+
+### Security Recommendations
+1. Change default credentials immediately after installation
+2. Enable HTTPS in production
+3. Regular security audits
+4. Keep system and dependencies updated
+5. Regular backup of data
+6. Monitor system logs for suspicious activities
+
+---
+
 ## UI Preview
 
 ### Main Dashboard
@@ -191,9 +225,9 @@ _This allows uploaded files (such as part images or documents) to be accessible 
 
 ## Default Accounts
 - **Superadmin**
-  - Email: `superadmin@gmail.com`
-  - Password: `Nusantara1;`
-- **Secret Code:** `Nusantara08*Regas` (hashed in the database)
+  - Email: `admin@example.com`
+  - Password: `[Contact administrator for default password]`
+- **Secret Code:** `[Contact administrator for secret code]` (hashed in the database)
 
 _After logging in as superadmin, you can create accounts for other departments/users._
 
