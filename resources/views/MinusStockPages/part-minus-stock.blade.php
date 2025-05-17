@@ -60,7 +60,7 @@
                     <input type="number" class="form-control"  placeholder="Tahun Perolehan" min="0" required name="yearStockPartOut" 
                     value="{{$singleData->yearStockPartIn}}" readonly> 
                 </div>
-            @endforeach
+                @endforeach
             @else
                 <label >Nomor Part</label>
                 <div class="mb-3">
@@ -137,7 +137,7 @@
 </div>
 <script>
 function changeValue(value) { 
-    fetch('/part-minus-findData/'+value)
+    fetch('/inventory/part-minus-findData/'+value)
     .then(function(response) {
         return response.json();
     })

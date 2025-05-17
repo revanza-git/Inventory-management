@@ -19,21 +19,21 @@ class HomeController extends Controller
       
         // COUNT IN
         if($currMonthOneDigit >= 1 && $currMonthOneDigit <= 3){
-            $firstRange = date($currYearDigit . '-01-' . '01');
-            $secondRange = date($currYearDigit . '-03-' . '31');
+            $firstRange = $currYearDigit . '-01-01';
+            $secondRange = $currYearDigit . '-03-31';
         }
         if ($currMonthOneDigit >= 4 && $currMonthOneDigit <= 6) {
-            $firstRange = date($currYearDigit . '-04-' . '01');
-            $secondRange = date($currYearDigit . '-06-' . '31');
+            $firstRange = $currYearDigit . '-04-01';
+            $secondRange = $currYearDigit . '-06-30';
         }
         if ($currMonthOneDigit >= 7 && $currMonthOneDigit <= 9) {
-            $firstRange = date($currYearDigit . '-07-' . '01');
-            $secondRange = date($currYearDigit . '-09-' . '30');
+            $firstRange = $currYearDigit . '-07-01';
+            $secondRange = $currYearDigit . '-09-30';
         }
 
         if ($currMonthOneDigit >= 10 && $currMonthOneDigit <= 12) {
-            $firstRange = date($currYearDigit.'-10-'.'01');
-            $secondRange = date($currYearDigit . '-12-' . '31');
+            $firstRange = $currYearDigit . '-10-01';
+            $secondRange = $currYearDigit . '-12-31';
         }
 
         if (Auth::user()->role == 'admin' || Auth::user()->role == 'master') {

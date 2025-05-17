@@ -266,11 +266,11 @@ class FlowInPendingApproval extends Controller
             'subject' => 'Pengajuan Formulir Terima Barang',
             'body' => "$namaRequester dari Departemen $departmentRequester telah mengajukan dokumen Formulir Terima Barang(FTB). Yuk segera di approve :)",
         ];
-        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
-            $message->to($mail_data['recipient'])
-                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
-                    ->subject($mail_data['subject']);
-        });
+        // \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+        //     $message->to($mail_data['recipient'])
+        //             ->from($mail_data['fromEmail'], $mail_data['fromName'])
+        //             ->subject($mail_data['subject']);
+        // });
         
         return redirect('/flowInPendingApprovalDate')->with('success', 'Berhasil Approve Satu Request');
     }

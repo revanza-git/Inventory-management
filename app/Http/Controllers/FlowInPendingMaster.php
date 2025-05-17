@@ -120,11 +120,11 @@ class FlowInPendingMaster extends Controller
             'subject' => 'Pengajuan Formulir Terima Barang',
             'body' => "Pengajuan Formulir Terima Barang-mu sudah selesai di approve. Silakan cek web SINV untuk melihat detailnya",
         ];
-        \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
-            $message->to($mail_data['recipient'])
-                    ->from($mail_data['fromEmail'], $mail_data['fromName'])
-                    ->subject($mail_data['subject']);
-        });
+        // \Mail::send('email-template',$mail_data, function($message) use ($mail_data){
+        //     $message->to($mail_data['recipient'])
+        //             ->from($mail_data['fromEmail'], $mail_data['fromName'])
+        //             ->subject($mail_data['subject']);
+        // });
 
         return redirect('/flowInPendingMaster')->with('success', 'Berhasil Approve Satu Request');
     }
