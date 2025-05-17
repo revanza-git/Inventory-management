@@ -98,10 +98,10 @@
 ## UI Preview
 
 ### Main Dashboard
-![System Inventory Dashboard](sinv0.jpg)
+![System Inventory Dashboard](/public/sinv0.jpg)
 
 ### Inventory Management Interface
-![Inventory Management](sinv1.jpg)
+![Inventory Management](/public/sinv1.jpg)
 
 ---
 
