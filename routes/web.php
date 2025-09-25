@@ -32,7 +32,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::middleware(['auth', 'cekrole:superadmin'])->group(function () {
     Route::get('/register', [RegisterController::class, 'index']);
     Route::post('/register', [RegisterController::class, 'store']);
-    Route::get('/resetPassword', [RegisterController::class, 'getAccount']);
+    Route::get('/listUsers', [RegisterController::class, 'listUsers']);
 
     Route::get('/editEmail/{id}', [RegisterController::class, 'editEmail']);
 

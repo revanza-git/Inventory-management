@@ -1,19 +1,56 @@
+# Laravel
 /node_modules
 /public/build
 /public/hot
 /public/storage
 /public/data
-/public/web.config
-/storage/app/data
 /storage/*.key
+/storage/app/data
+/storage/logs/*.log
+/storage/framework/cache/data/*
+/storage/framework/sessions/*
+/storage/framework/views/*
 /vendor
+bootstrap/cache/*
 .env
 .env.backup
+.env.production
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 auth.json
 npm-debug.log
 yarn-error.log
+.rr.yaml
+
+# IIS
+web.config
+/public/web.config
+
+# IDE
 /.idea
 /.vscode
+*.swp
+*.swo
+.DS_Store
+
+# Composer
+composer.phar
+composer.lock
+
+# NPM/Yarn
+package-lock.json
+yarn.lock
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Backup files
+*.bak
+*.backup
+*~

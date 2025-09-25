@@ -22,7 +22,7 @@ class LoginController extends Controller
          $request->session()->regenerate();
 
          if (Auth::user()->role == 'superadmin') {
-            return redirect()->intended('/register');
+            return redirect()->intended('/listUsers');
          }
 
          if (Auth::user()->role == 'master') {

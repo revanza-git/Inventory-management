@@ -54,7 +54,7 @@
                             <a href="/inventory/register">Register</a>
                         </li>
                         <li>
-                            <a href="/inventory/resetPassword">Reset Password</a>
+                            <a href="/inventory/listUsers">List Users</a>
                         </li>
                     </ul>
                 </li>

@@ -60,6 +60,13 @@ class RegisterController extends Controller
                             ->get();
         return view('resetPassword', ['accountlList' => $queryAllAccount]);
     }
+
+    public function listUsers(){
+        $users = User::select('id', 'name', 'email', 'role', 'departement')
+                    ->orderBy('id', 'desc')
+                    ->get();
+        return view('listUsers', ['users' => $users]);
+    }
     
     public function showAccount($id){
         $user = User::findOrFail($id);

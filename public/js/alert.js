@@ -1,4 +1,6 @@
 setTimeout(() => {
     const box = document.getElementById('box');
-    box.style.display = 'none';
+    if (box) {
+        box.style.display = 'none';
+    }
 }, 5000);

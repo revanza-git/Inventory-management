@@ -5,22 +5,343 @@
 ---
 
 ## Table of Contents
-1. [Requirements](#requirements)
-2. [Features](#features)
-3. [Database Schema](#database-schema)
-4. [UI Preview](#ui-preview)
-5. [Installation](#installation)
-6. [Configuration](#configuration)
-7. [Database Setup](#database-setup)
-8. [Testing Environment](#testing-environment)
-9. [Migration System](#migration-system)
-10. [Seeding Initial Data](#seeding-initial-data)
-11. [Storage Link](#storage-link)
-12. [Running the Application](#running-the-application)
-13. [Default Accounts](#default-accounts)
-14. [API Authentication](#api-authentication)
-15. [Troubleshooting](#troubleshooting)
-16. [About & Contact](#about--contact)
+1. [System Architecture](#system-architecture)
+2. [Data Flow Diagrams](#data-flow-diagrams)
+3. [Approval Workflow](#approval-workflow)
+4. [Database Flow Architecture](#database-flow-architecture)
+5. [Requirements](#requirements)
+6. [Features](#features)
+7. [Database Schema](#database-schema)
+8. [UI Preview](#ui-preview)
+9. [Installation](#installation)
+10. [Configuration](#configuration)
+11. [Database Setup](#database-setup)
+12. [Testing Environment](#testing-environment)
+13. [Migration System](#migration-system)
+14. [Seeding Initial Data](#seeding-initial-data)
+15. [Storage Link](#storage-link)
+16. [Running the Application](#running-the-application)
+17. [Default Accounts](#default-accounts)
+18. [API Authentication](#api-authentication)
+19. [Troubleshooting](#troubleshooting)
+20. [About & Contact](#about--contact)
+
+---
+
+## System Architecture
+
+### High-Level Architecture Overview
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           SYSTEM INVENTORY ARCHITECTURE                          │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────┐    ┌──────────────────┐    ┌─────────────────────────────┐ │
+│  │   Web Browser   │    │   Mobile Client  │    │    API Consumers           │ │
+│  │   (Frontend)    │    │   (Optional)     │    │    (Third-party)           │ │
+│  └─────────────────┘    └──────────────────┘    └─────────────────────────────┘ │
+│           │                       │                           │                  │
+│           └───────────────────────┼───────────────────────────┘                  │
+│                                   │                                              │
+├───────────────────────────────────┼──────────────────────────────────────────────┤
+│  ┌─────────────────────────────────▼─────────────────────────────────────────┐   │
+│  │                        IIS 10 WEB SERVER                                   │   │
+│  │  ┌─────────────────────────────────────────────────────────────────────┐  │   │
+│  │  │                    LARAVEL APPLICATION                               │  │   │
+│  │  │                                                                     │  │   │
+│  │  │  ┌──────────────┐  ┌─────────────┐  ┌──────────────────────────┐  │  │   │
+│  │  │  │ Controllers  │  │ Middleware  │  │     API Routes            │  │  │   │
+│  │  │  │              │  │             │  │     Web Routes            │  │  │   │
+│  │  │  └──────────────┘  └─────────────┘  └──────────────────────────┘  │  │   │
+│  │  │                                                                     │  │   │
+│  │  │  ┌──────────────┐  ┌─────────────┐  ┌──────────────────────────┐  │  │   │
+│  │  │  │   Models     │  │ Validators  │  │     Services             │  │  │   │
+│  │  │  │   Eloquent   │  │             │  │                          │  │  │   │
+│  │  │  └──────────────┘  └─────────────┘  └──────────────────────────┘  │  │   │
+│  │  └─────────────────────────────────────────────────────────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │                          SQL SERVER DATABASE                                 │   │
+│  │                                                                             │   │
+│  │  ┌──────────────┐  ┌─────────────┐  ┌──────────────────────────────────┐  │   │
+│  │  │ Core Tables  │  │ Flow Tables │  │        History Tables            │  │   │
+│  │  │              │  │             │  │                                  │  │   │
+│  │  │ • users      │  │ • flow_in   │  │ • history_in                     │  │   │
+│  │  │ • part       │  │ • flow_out  │  │ • history_out                    │  │   │
+│  │  │ • secret_code│  │ • auto_ftb  │  │ • personal_access_tokens         │  │   │
+│  │  │              │  │ • auto_fkb  │  │                                  │  │   │
+│  │  └──────────────┘  └─────────────┘  └──────────────────────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│  ┌─────────────────────────────────────────────────────────────────────────────┐   │
+│  │                              FILE STORAGE                                    │   │
+│  │                                                                             │   │
+│  │  ┌──────────────┐  ┌─────────────┐  ┌──────────────────────────────────┐  │   │
+│  │  │ Public Files │  │ Private     │  │        Document Storage          │  │   │
+│  │  │              │  │ Storage     │  │                                  │  │   │
+│  │  │ • Images     │  │ • Logs      │  │ • PDF Documents                  │  │   │
+│  │  │ • CSS/JS     │  │ • Cache     │  │ • Digital Signatures             │  │   │
+│  │  │ • Assets     │  │ • Sessions  │  │ • Photo Attachments              │  │   │
+│  │  └──────────────┘  └─────────────┘  └──────────────────────────────────┘  │   │
+│  └─────────────────────────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Technology Stack
+- **Backend**: Laravel 8.x+ (PHP 8.x)
+- **Database**: Microsoft SQL Server
+- **Web Server**: IIS 10
+- **Frontend**: Blade Templates + Bootstrap + JavaScript
+- **Authentication**: Laravel Sanctum
+- **File Storage**: Local Storage + Symbolic Links
+
+---
+
+## Data Flow Diagrams
+
+### FTB (Form Transfer Barang) - Inbound Flow
+
+```
+┌──────────────┐    ┌───────────────┐    ┌─────────────────┐    ┌──────────────────┐
+│   Supplier   │───▶│  Goods Recv.  │───▶│  Create FTB     │───▶│   Approval       │
+│   Delivery   │    │  Inspection   │    │  Document       │    │   Process        │
+└──────────────┘    └───────────────┘    └─────────────────┘    └──────────────────┘
+                                                │                          │
+                                                ▼                          │
+┌──────────────┐    ┌───────────────┐    ┌─────────────────┐               │
+│  Update      │◀───│  Stock        │◀───│  Part Catalog   │               │
+│  Inventory   │    │  Addition     │    │  Management     │               │
+└──────────────┘    └───────────────┘    └─────────────────┘               │
+       │                                                                   │
+       ▼                                                                   │
+┌──────────────┐    ┌───────────────┐    ┌─────────────────┐               │
+│  History     │    │  Document     │    │  Auto Number    │               │
+│  Tracking    │    │  Storage      │    │  Generation     │               │
+└──────────────┘    └───────────────┘    └─────────────────┘               │
+                                                                           │
+                    ┌─────────────────────────────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          4-STAGE APPROVAL WORKFLOW                               │
+│                                                                                 │
+│  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────────────┐  │
+│  │   Stage 1   │──▶│   Stage 2   │──▶│   Stage 3   │──▶│      Stage 4        │  │
+│  │    User     │   │    Admin    │   │    Head     │   │      Master         │  │
+│  │   Level     │   │   Level     │   │   Level     │   │      Level          │  │
+│  └─────────────┘   └─────────────┘   └─────────────┘   └─────────────────────┘  │
+│        │                 │                 │                      │             │
+│        ▼                 ▼                 ▼                      ▼             │
+│  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────────────┐  │
+│  │ Digital     │   │ Digital     │   │ Digital     │   │ Digital             │  │
+│  │ Signature   │   │ Signature   │   │ Signature   │   │ Signature           │  │
+│  │ + Reason    │   │ + Reason    │   │ + Reason    │   │ + Reason            │  │
+│  └─────────────┘   └─────────────┘   └─────────────┘   └─────────────────────┘  │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### FKB (Form Keluar Barang) - Outbound Flow
+
+```
+┌──────────────┐    ┌───────────────┐    ┌─────────────────┐    ┌──────────────────┐
+│  Department  │───▶│  Stock        │───▶│  Create FKB     │───▶│   Approval       │
+│  Request     │    │  Verification │    │  Document       │    │   Process        │
+└──────────────┘    └───────────────┘    └─────────────────┘    └──────────────────┘
+                                                │                          │
+                                                ▼                          │
+┌──────────────┐    ┌───────────────┐    ┌─────────────────┐               │
+│  Stock       │◀───│  Inventory    │◀───│  Stock Level    │               │
+│  Reduction   │    │  Update       │    │  Check          │               │
+└──────────────┘    └───────────────┘    └─────────────────┘               │
+       │                                                                   │
+       ▼                                                                   │
+┌──────────────┐    ┌───────────────┐    ┌─────────────────┐               │
+│  History     │    │  Delivery     │    │  Document       │               │
+│  Tracking    │    │  Processing   │    │  Archive        │               │
+└──────────────┘    └───────────────┘    └─────────────────┘               │
+                                                                           │
+                    ┌─────────────────────────────────────────────────────┘
+                    │
+                    ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                          4-STAGE APPROVAL WORKFLOW                               │
+│                         (Same as FTB Process Above)                              │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Approval Workflow
+
+### Multi-Stage Approval Process
+
+```
+                          ┌─────────────────────────────────────┐
+                          │        DOCUMENT SUBMISSION           │
+                          │      (FTB/FKB Created)              │
+                          └─────────────────────────────────────┘
+                                           │
+                                           ▼
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                              STAGE 1 - USER LEVEL                                │
+    │                                                                                 │
+    │  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────────────┐  │
+    │  │ Document    │──▶│ Validation  │──▶│ Review &    │──▶│ Digital Signature   │  │
+    │  │ Review      │   │ Check       │   │ Approve     │   │ + Approval Reason   │  │
+    │  └─────────────┘   └─────────────┘   └─────────────┘   └─────────────────────┘  │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                                           ▼
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                             STAGE 2 - ADMIN LEVEL                                │
+    │                                                                                 │
+    │  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────────────┐  │
+    │  │ Admin       │──▶│ Technical   │──▶│ Final       │──▶│ Digital Signature   │  │
+    │  │ Validation  │   │ Review      │   │ Approval    │   │ + Approval Reason   │  │
+    │  └─────────────┘   └─────────────┘   └─────────────┘   └─────────────────────┘  │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                                           ▼
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                             STAGE 3 - HEAD LEVEL                                 │
+    │                                                                                 │
+    │  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────────────┐  │
+    │  │ Department  │──▶│ Budget      │──▶│ Strategic   │──▶│ Digital Signature   │  │
+    │  │ Impact      │   │ Approval    │   │ Review      │   │ + Approval Reason   │  │
+    │  └─────────────┘   └─────────────┘   └─────────────┘   └─────────────────────┘  │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                                           ▼
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                            STAGE 4 - MASTER LEVEL                                │
+    │                                                                                 │
+    │  ┌─────────────┐   ┌─────────────┐   ┌─────────────┐   ┌─────────────────────┐  │
+    │  │ Final       │──▶│ Executive   │──▶│ Master      │──▶│ Digital Signature   │  │
+    │  │ Authorization│   │ Review      │   │ Approval    │   │ + Completion        │  │
+    │  └─────────────┘   └─────────────┘   └─────────────┘   └─────────────────────┘  │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                                           ▼
+                          ┌─────────────────────────────────────┐
+                          │         PROCESS COMPLETION           │
+                          │    • Stock Updated                  │
+                          │    • History Recorded               │
+                          │    • Documents Archived             │
+                          │    • Notifications Sent             │
+                          └─────────────────────────────────────┘
+
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                             REJECTION HANDLING                                   │
+    │                                                                                 │
+    │  Any stage can REJECT the document, which:                                      │
+    │  • Stops the approval process                                                   │
+    │  • Records rejection reason                                                     │
+    │  • Notifies the originator                                                      │
+    │  • Allows for document revision and resubmission                               │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## Database Flow Architecture
+
+### Core Data Relationships
+
+```
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                              CORE ENTITIES                                       │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                                           │
+                                           ▼
+    ┌─────────────────┐                ┌─────────────────┐                ┌─────────────────┐
+    │     USERS       │                │      PARTS      │                │  SECRET_CODES   │
+    │                 │                │                 │                │                 │
+    │ • id            │                │ • idPart (PK)   │                │ • id            │
+    │ • name          │                │ • part_number   │                │ • secret_code   │
+    │ • email         │                │ • description   │                │ • created_at    │
+    │ • role          │                │ • category      │                │                 │
+    │ • digital_sign  │                │ • location      │                │                 │
+    └─────────────────┘                └─────────────────┘                └─────────────────┘
+                                                │
+                                                │
+                        ┌───────────────────────┼───────────────────────┐
+                        │                       │                       │
+                        ▼                       ▼                       ▼
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                              FLOW MANAGEMENT                                     │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                        │                                               │
+                        ▼                                               ▼
+    ┌─────────────────┐                                    ┌─────────────────┐
+    │  FLOW_IN_PART   │                                    │  FLOW_OUT_PART  │
+    │     (FTB)       │                                    │     (FKB)       │
+    │                 │                                    │                 │
+    │ • id_flowInPart │                                    │ • id_flowOutPart│
+    │ • idPart (FK)   │                                    │ • idPart (FK)   │
+    │ • quantity      │                                    │ • quantity      │
+    │ • document_no   │                                    │ • document_no   │
+    │ • approval_1    │                                    │ • approval_1    │
+    │ • approval_2    │                                    │ • approval_2    │
+    │ • approval_3    │                                    │ • approval_3    │
+    │ • approval_4    │                                    │ • approval_4    │
+    │ • created_at    │                                    │ • created_at    │
+    └─────────────────┘                                    └─────────────────┘
+            │                                                      │
+            ▼                                                      ▼
+    ┌─────────────────┐                                    ┌─────────────────┐
+    │   HISTORY_IN    │                                    │   HISTORY_OUT   │
+    │                 │                                    │                 │
+    │ • id            │                                    │ • id            │
+    │ • id_flowInPart │                                    │ • id_flowOutPart│
+    │ • action        │                                    │ • action        │
+    │ • user_id       │                                    │ • user_id       │
+    │ • timestamp     │                                    │ • timestamp     │
+    │ • details       │                                    │ • details       │
+    └─────────────────┘                                    └─────────────────┘
+
+    ┌─────────────────────────────────────────────────────────────────────────────────┐
+    │                            SUPPORTING TABLES                                     │
+    └─────────────────────────────────────────────────────────────────────────────────┘
+                        │                                               │
+                        ▼                                               ▼
+    ┌─────────────────┐         ┌─────────────────┐         ┌─────────────────┐
+    │    AUTO_FTB     │         │    AUTO_FKB     │         │PERSONAL_ACCESS_ │
+    │                 │         │                 │         │     TOKENS      │
+    │ • id            │         │ • id            │         │                 │
+    │ • current_no    │         │ • current_no    │         │ • id            │
+    │ • prefix        │         │ • prefix        │         │ • tokenable_id  │
+    │ • year          │         │ • year          │         │ • name          │
+    │                 │         │                 │         │ • token         │
+    └─────────────────┘         └─────────────────┘         │ • abilities     │
+                                                            └─────────────────┘
+```
+
+### Data Flow Process
+
+```
+1. INBOUND FLOW (FTB):
+   Parts → flow_in_part → Approvals → history_in → Stock Update
+
+2. OUTBOUND FLOW (FKB):
+   Request → flow_out_part → Approvals → history_out → Stock Reduction
+
+3. APPROVAL TRACKING:
+   Each approval stage updates the respective approval_X column
+   History tables maintain complete audit trail
+
+4. DOCUMENT NUMBERING:
+   auto_ftb and auto_fkb provide sequential document numbers
+   Format: PREFIX-YYYY-NNNN (e.g., FTB-2024-0001)
+
+5. USER MANAGEMENT:
+   users table manages authentication and role-based access
+   personal_access_tokens enables API authentication via Laravel Sanctum
+
+6. SECURITY:
+   secret_codes table stores system-wide security codes
+   Digital signatures stored with user records
+```
 
 ---
 

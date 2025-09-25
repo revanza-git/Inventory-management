@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; img-src 'self' data:;">
-    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' cdn.jsdelivr.net; font-src 'self' cdn.jsdelivr.net; connect-src 'self' cdn.jsdelivr.net; img-src 'self' data:;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
@@ -49,7 +48,7 @@
             <div class="form-wrapper">
                 <div class="d-flex flex-column">
                     <div class="mb-4">
-                        <img src="/images/logo.png" alt="Company Logo" width="60%"  class="d-inline-block align-text-top mb-4">
+                        <img src="{{ asset('nr.png') }}" alt="Company Logo" width="60%"  class="d-inline-block align-text-top mb-4">
                         <h3 class="font-medium mb-1 mt-2">Login</h3>
                         @if (session()->has('success'))
                                 <div class="alert greenAdd" role="alert" id="box">
@@ -112,7 +111,7 @@
             typeSpeed: 100,
         });
     </script>
-    <script src="{{asset('js/alert.js')}}"></script>
+    <script src="{{asset('js/alert.js')}}?v={{time()}}"></script>
 </body>
 
 </html>
