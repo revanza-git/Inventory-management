@@ -33,7 +33,8 @@ class PartController extends Controller
             'satuanPart' => 'required',
             'lokasiPart' => 'required',
             'size'=>'nullable',
-            'keterangan' => 'nullable'
+            'keterangan' => 'nullable',
+            'kimap_no' => 'nullable'
         ]);
         $checkSucces = Part::create($validatedData);
         $category = $validatedData['kategoriPart'];
@@ -247,7 +248,8 @@ class PartController extends Controller
             'descPart' => 'required|string',
             'satuanPart' => 'required|string',
             'lokasiPart' => 'required|string',
-            'size'=>'nullable'
+            'size'=>'nullable',
+            'kimap_no' => 'nullable'
         ]);
         $part->namaPart = ucwords($request->namaPart);
         $part->kategoriMaterial = $request->kategoriMaterial;
@@ -257,6 +259,10 @@ class PartController extends Controller
         
         if(!is_null($request->size)){
             $part->size = $request->size;
+        }
+        
+        if(!is_null($request->kimap_no)){
+            $part->kimap_no = $request->kimap_no;
         }
         $checkSucces = $part->save();
         $category = $part->kategoriPart;

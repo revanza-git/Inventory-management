@@ -58,6 +58,13 @@
             <p style="display: inline-block; margin-left:5px; color:black;">{{$records->size}}</p>
         </div>
         @endif
+
+        @if($records->kategoriMaterial == 'stock' && isset($records->kimap_no) && $records->kimap_no)
+        <div class="mb-1">
+            <label style="display: inline-block; font-weight:bold;">Kimap No. :</label>
+            <p style="display: inline-block; margin-left:5px; color:black;">{{$records->kimap_no}}</p>
+        </div>
+        @endif
         <div class="mb-1" style="display: inline">
             <label style="display: inline-block; font-weight:bold;">Satuan :</label>
             <p style="display: inline-block; margin-left:5px; color:black;">{{$records->satuanPart}}</p>

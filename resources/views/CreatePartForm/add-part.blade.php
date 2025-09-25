@@ -20,14 +20,14 @@
             </div>
             
             <div class="form-floating mb-3">
-                <select name="kategoriMaterial" class="form-select form-control" aria-label="Default select example" id="dropdown">
+                <select name="kategoriMaterial" class="form-select form-control" aria-label="Default select example" id="kategoriMaterialDropdown">
                     <option value="stock"selected>Stock</option>
                     <option value="surplus">Surplus Proyek</option>
                     <option value="dead">Dead Stock</option>
                     <option value="rongsokan">Rongsokan</option>
                     <option value="charges">Direct Charges</option>
                 </select>
-                <label for="dropdown">Kategori Material</label>
+                <label for="kategoriMaterialDropdown">Kategori Material</label>
             </div>
             
             <div class="form-floating mb-3">
@@ -109,6 +109,11 @@
                 <label for="floatingInput">Size</label>
             </div>
 
+            <div class="form-floating mb-3" id="kimapNoField" style="display: block;">
+                <input type="text" class="form-control" id="kimapNoInput" placeholder="Masukkan Kimap No."  name="kimap_no" type="text">
+                <label for="kimapNoInput">Kimap No.</label>
+            </div>
+
             <div class="form-floating mb-3">
                 <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" 
                 name="keterangan"></textarea>
@@ -132,5 +137,26 @@
 </div>
 
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const kategoriMaterialDropdown = document.getElementById('kategoriMaterialDropdown');
+    const kimapNoField = document.getElementById('kimapNoField');
+    const kimapNoInput = document.getElementById('kimapNoInput');
+
+    function toggleKimapField() {
+        if (kategoriMaterialDropdown.value === 'stock') {
+            kimapNoField.style.display = 'block';
+        } else {
+            kimapNoField.style.display = 'none';
+            kimapNoInput.value = '';
+        }
+    }
+
+    kategoriMaterialDropdown.addEventListener('change', toggleKimapField);
+    
+    toggleKimapField();
+});
+</script>
 
 @endsection

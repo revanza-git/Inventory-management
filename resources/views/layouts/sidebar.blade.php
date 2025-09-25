@@ -192,7 +192,7 @@
                             <a href="/inventory/sekper">Titipan Sekper</a>
                         </li>
                         <li>
-                            <a href="/hsse">Titipan HSSE</a>
+                            <a href="/inventory/hsse">Titipan HSSE</a>
                         </li>
                         <li>
                             <a href="/inventory/gasorf">Titipan Distibusi Gas dan Manajemen Orf</a>

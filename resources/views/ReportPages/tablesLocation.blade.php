@@ -2,7 +2,7 @@
     <table id="reportTable" class="table table-bordered table-hover mt-2 table-striped">
         <thead>
             <tr>
-                <th colspan="9" rowspan="4"></th>
+                <th colspan="10" rowspan="4"></th>
             </tr>
             <tr>
                 <th></th>
@@ -14,7 +14,7 @@
                 <th></th>
             </tr>
             <tr>
-                <th colspan="9" style="text-align:center;"> 
+                <th colspan="10" style="text-align:center;"> 
                     <strong>Laporan Rekapitulasi {{ucwords($category)}} Jaringan {{ucwords($lokasiPart)}} Periode 
                         {{Carbon\Carbon::parse($firstRange)->isoFormat('LL');}} - {{Carbon\Carbon::parse($secondRange)->isoFormat('LL');}}
                     </strong>
@@ -24,6 +24,7 @@
                 <th scope="col">No</th>
                 <th scope="col">Nama Part</th>
                 <th scope="col">Deskripsi</th>
+                <th scope="col">Kimap No.</th>
                 <th scope="col">Size</th>
                 <th scope="col">Satuan</th>
                 <th scope="col">Jumlah Awal</th>
@@ -38,6 +39,7 @@
                 <td scope="row">{{$loop->iteration}}</td>
                 <td>{{$data->namaPart}}</td>
                 <td>{{$data->descPart}}</td>
+                <td>{{$data->kimap_no ?? '-'}}</td>
                 <td>{{$data->size}}</td>
                 <td>{{$data->satuanPart}}</td>
                 <td>{{$data->stockAwal}}</td>
@@ -56,7 +58,7 @@
                 <td>{{$data->keterangan}}</td>
             </tr>
             @empty
-            <td colspan="8" class="text-center">
+            <td colspan="9" class="text-center">
                 Tidak ada Data
             </td>
             @endforelse
