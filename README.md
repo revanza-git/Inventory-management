@@ -1,30 +1,72 @@
 # System Inventory
 
-© 2024 Copyright : Revanza
+© 2025 Copyright : Revanza
 
 ---
 
 ## Table of Contents
-1. [System Architecture](#system-architecture)
-2. [Data Flow Diagrams](#data-flow-diagrams)
-3. [Approval Workflow](#approval-workflow)
-4. [Database Flow Architecture](#database-flow-architecture)
-5. [Requirements](#requirements)
-6. [Features](#features)
-7. [Database Schema](#database-schema)
-8. [UI Preview](#ui-preview)
-9. [Installation](#installation)
-10. [Configuration](#configuration)
-11. [Database Setup](#database-setup)
-12. [Testing Environment](#testing-environment)
-13. [Migration System](#migration-system)
-14. [Seeding Initial Data](#seeding-initial-data)
-15. [Storage Link](#storage-link)
-16. [Running the Application](#running-the-application)
-17. [Default Accounts](#default-accounts)
-18. [API Authentication](#api-authentication)
-19. [Troubleshooting](#troubleshooting)
-20. [About & Contact](#about--contact)
+1. [Quick Start](#quick-start)
+2. [System Architecture](#system-architecture)
+3. [Data Flow Diagrams](#data-flow-diagrams)
+4. [Approval Workflow](#approval-workflow)
+5. [Database Flow Architecture](#database-flow-architecture)
+6. [Requirements](#requirements)
+7. [Features](#features)
+8. [Database Schema](#database-schema)
+9. [UI Preview](#ui-preview)
+10. [Installation](#installation)
+11. [Configuration](#configuration)
+12. [Database Setup](#database-setup)
+13. [Testing Environment](#testing-environment)
+14. [Migration System](#migration-system)
+15. [Seeding Initial Data](#seeding-initial-data)
+16. [Storage Link](#storage-link)
+17. [Running the Application](#running-the-application)
+18. [Default Accounts](#default-accounts)
+19. [API Authentication](#api-authentication)
+20. [Production Deployment](#production-deployment)
+21. [Troubleshooting](#troubleshooting)
+22. [About & Contact](#about--contact)
+
+---
+
+## Quick Start
+
+### Prerequisites
+- PHP 8.1+ with required extensions (pdo_sqlsrv, mbstring, openssl, etc.)
+- Composer 2.x
+- Node.js 16+ & npm
+- Microsoft SQL Server (Express or higher)
+- IIS 10 (or compatible web server)
+
+### Fast Setup (5 minutes)
+```bash
+# 1. Clone and install dependencies
+git clone <repository-url>
+cd Inventory
+composer install
+npm install
+
+# 2. Configure environment
+cp .env.example .env
+# Edit .env with your database credentials
+
+# 3. Generate app key and setup database
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+
+# 4. Create storage link and start server
+php artisan storage:link
+php artisan serve
+```
+
+### Access Application
+- **URL**: http://localhost:8000
+- **Admin Email**: admin@example.com
+- **Password**: Contact administrator for credentials
+
+For detailed setup instructions, see [Installation](#installation) section.
 
 ---
 
@@ -346,11 +388,29 @@
 ---
 
 ## Requirements
-- **PHP 8.x**: Runs the backend logic and API for the inventory system.
-- **Composer**: Manages PHP dependencies and Laravel packages.
-- **Node.js & npm**: Used for compiling and managing frontend assets (CSS, JS) for the user interface.
-- **SQL Server**: Stores all inventory, user, and transaction data securely.
-- **Git** (optional): For version control and code management.
+
+### System Requirements
+- **PHP 8.1+** with extensions:
+  - pdo_sqlsrv (SQL Server driver)
+  - mbstring (multibyte string support)
+  - openssl (encryption)
+  - tokenizer (Laravel requirement)
+  - xml (XML processing)
+  - ctype (character type checking)
+  - json (JSON processing)
+  - bcmath (precision mathematics)
+  - fileinfo (file information)
+- **Composer 2.x**: PHP dependency management
+- **Node.js 16+** & **npm 8+**: Frontend asset compilation
+- **Microsoft SQL Server 2016+** (Express, Standard, or Enterprise)
+- **IIS 10+** or Apache 2.4+ (web server)
+- **Windows Server 2016+** or Windows 10+ (recommended)
+
+### Optional Tools
+- **Git 2.x**: Version control and code management
+- **Visual Studio Code**: Development environment
+- **SQL Server Management Studio**: Database administration
+- **Postman**: API testing and development
 
 ---
 
@@ -711,6 +771,80 @@ The system includes Laravel Sanctum for API authentication:
 - Tokens can have abilities/scopes for fine-grained access control
 - Tokens can have expiration dates
 - Last used timestamps are tracked
+
+---
+
+## Production Deployment
+
+### IIS Configuration
+1. **Install Required Modules**:
+   - URL Rewrite Module
+   - PHP Manager for IIS
+   - Microsoft Drivers for PHP for SQL Server
+
+2. **Site Configuration**:
+   ```xml
+   <!-- web.config for Laravel on IIS -->
+   <configuration>
+     <system.webServer>
+       <rewrite>
+         <rules>
+           <rule name="Laravel" stopProcessing="true">
+             <match url="^(.*)$" ignoreCase="false" />
+             <conditions>
+               <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+               <add input="{REQUEST_FILENAME}" matchType="IsDirectory" negate="true" />
+             </conditions>
+             <action type="Rewrite" url="index.php/{R:1}" appendQueryString="true" />
+           </rule>
+         </rules>
+       </rewrite>
+     </system.webServer>
+   </configuration>
+   ```
+
+3. **Set Document Root**: Point to `/public` directory
+4. **Configure PHP**: Ensure proper PHP version and extensions
+5. **Set Permissions**: Grant IIS_IUSRS write access to `storage` and `bootstrap/cache`
+
+### Environment Configuration
+```bash
+# Production environment settings
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://your-domain.com
+
+# Database production settings
+DB_CONNECTION=sqlsrv
+DB_HOST=your-sql-server
+DB_DATABASE=inventory_production
+DB_USERNAME=inventory_user
+DB_PASSWORD=secure_password
+
+# Cache and session configuration
+CACHE_DRIVER=redis
+SESSION_DRIVER=redis
+QUEUE_CONNECTION=redis
+```
+
+### Security Checklist
+- [ ] Update all default passwords
+- [ ] Enable HTTPS with valid SSL certificate
+- [ ] Configure firewall rules
+- [ ] Set up database backups
+- [ ] Enable audit logging
+- [ ] Configure rate limiting
+- [ ] Set up monitoring and alerting
+
+### Performance Optimization
+```bash
+# Optimize for production
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+composer install --optimize-autoloader --no-dev
+npm run production
+```
 
 ---
 

@@ -1,4 +1,4 @@
-# Laravel
+# Laravel Framework
 /node_modules
 /public/build
 /public/hot
@@ -10,47 +10,146 @@
 /storage/framework/cache/data/*
 /storage/framework/sessions/*
 /storage/framework/views/*
+/storage/framework/testing/*
+/storage/clockwork/*
 /vendor
 bootstrap/cache/*
 .env
-.env.backup
-.env.production
+.env.*
+!.env.example
 .phpunit.result.cache
+.phpunit.cache
 Homestead.json
 Homestead.yaml
 auth.json
-npm-debug.log
-yarn-error.log
-.rr.yaml
+mix-manifest.json
+.mix
+.nova
 
-# IIS
-web.config
-/public/web.config
-
-# IDE
-/.idea
-/.vscode
-*.swp
-*.swo
-.DS_Store
+# Dependencies & Package Managers
+/node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+.pnp
+.pnp.js
 
 # Composer
 composer.phar
 composer.lock
+/vendor
 
-# NPM/Yarn
-package-lock.json
-yarn.lock
+# IIS & Web Server
+web.config
+/public/web.config
+httpd.pid
 
+# IDE & Editors
+/.idea
+/.vscode
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+.buildpath
+*.swp
+*.swo
+*~
+.vimrc.local
+
+# OS Generated Files
 # Windows
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
+ehthumbs_vista.db
 Desktop.ini
+$RECYCLE.BIN/
 
-# Logs
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Logs & Debug Files
 *.log
+*.logs
+logs/
+lerna-debug.log*
+.nyc_output
+coverage/
+*.lcov
+.coverage
+.pytest_cache/
+phpunit.xml
 
-# Backup files
+# Runtime & Cache
+*.cache
+*.tmp
+*.temp
+.sass-cache/
+.cache
+.parcel-cache
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+database.sqlite
+
+# Backup & Archive Files
 *.bak
 *.backup
-*~
+*.old
+*.orig
+*.rej
+*.zip
+*.tar.gz
+*.rar
+
+# Security & Sensitive Files
+*.pem
+*.key
+*.crt
+*.csr
+.ssh/
+secrets.txt
+
+# Development & Testing
+.rr.yaml
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+.php_cs.cache
+.php-cs-fixer.cache
+.phpunit.result.cache
+.phpunit.cache
+phpunit.xml
+.dusk/
+
+# Build & Distribution
+/build
+/dist
+/public/js/app.js
+/public/css/app.css
+/public/mix-manifest.json

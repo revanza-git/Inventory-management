@@ -110,6 +110,26 @@
             loop: true,
             typeSpeed: 100,
         });
+
+        // Auto-refresh CSRF token every 30 minutes to prevent expiration
+        setInterval(function() {
+            fetch('/login', {
+                method: 'GET',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
+            })
+            .then(response => response.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newToken = doc.querySelector('input[name="_token"]').value;
+                document.querySelector('input[name="_token"]').value = newToken;
+            })
+            .catch(error => {
+                console.log('Token refresh failed:', error);
+            });
+        }, 30 * 60 * 1000); // 30 minutes
     </script>
     <script src="{{asset('js/alert.js')}}?v={{time()}}"></script>
 </body>

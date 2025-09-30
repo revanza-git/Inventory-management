@@ -47,4 +47,28 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Throwable  $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     * @throws \Throwable
+     */
+    public function render($request, Throwable $exception)
+    {
+        // Handle 419 CSRF token mismatch errors
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+            if ($request->expectsJson()) {
+                return response()->json(['message' => 'CSRF token expired. Please refresh and try again.'], 419);
+            }
+            
+            return redirect()->route('login')
+                ->with('loginError', 'Your session has expired. Please try logging in again.');
+        }
+
+        return parent::render($request, $exception);
+    }
 }
